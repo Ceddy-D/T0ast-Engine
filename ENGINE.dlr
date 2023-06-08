@@ -1,0 +1,13 @@
+[DLSimRunSpace]
+
+[Breakpoint]
+Address=80000000:88023F10
+Count=00000004
+Name=Draw_Tilemap:tilemap.tileset
+Flags=00000042
+
+[Breakpoint]
+Address=80000000:88023EB8
+Count=0000000C
+Name=Draw_Sprite_Scale:sprite
+Flags=00000042

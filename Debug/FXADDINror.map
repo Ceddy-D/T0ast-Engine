@@ -1,0 +1,383 @@
+Hitachi Optimizing Linkage Editor (Ver. 7.1.03.000)08-Jun-2023 16:40:44
+
+*** Options ***
+
+-subcommand=C:\Users\CEDDYD~1\AppData\Local\Temp\hmkF4A6.tmp
+noprelink
+sdebug
+rom D=R
+nomessage
+list "C:\Users\Ceddy D\Documents\CASIO\fx-9860G SDK\ENGINE\Debug\FXADDINror.map"
+show symbol
+nooptimize
+start P_TOP,P,C,D,C$VTBL,C$INIT/0300200,B_BR_Size,B,R/08100000
+fsymbol P
+nologo
+input "C:\Users\Ceddy D\Documents\CASIO\fx-9860G SDK\ENGINE\Debug\getkey.obj" "C:\Users\Ceddy D\Documents\CASIO\fx-9860G SDK\ENGINE\Debug\main.obj" "C:\Users\Ceddy D\Documents\CASIO\fx-9860G SDK\ENGINE\Debug\SH4_compatibility.obj" "C:\Users\Ceddy D\Documents\CASIO\fx-9860G SDK\ENGINE\Debug\toast_engine.obj"
+input "C:\Program Files\CASIO\fx-9860G SDK\OS\FX\lib\setup.obj"
+library "C:\Program Files\CASIO\fx-9860G SDK\OS\FX\lib\fx9860G_library.lib"
+output "C:\Users\Ceddy D\Documents\CASIO\fx-9860G SDK\ENGINE\Debug\FXADDINror.abs"
+-nomessage=1100
+end
+
+*** Error information ***
+
+*** Mapping List ***
+
+SECTION                            START      END         SIZE   ALIGN
+
+P_TOP
+                                  00300200  0030020b         c   4
+P
+                                  0030020c  00300eaf       ca4   4
+C
+                                  00300eb0  0030127f       3d0   4
+D
+                                  00301280  00301283         4   4
+B_BR_Size
+                                  08100000  08100003         4   4
+B
+                                  08100004  08100007         4   4
+R
+                                  08100008  0810000b         4   4
+
+*** Symbol List ***
+
+SECTION=
+FILE=                               START        END    SIZE
+  SYMBOL                            ADDR        SIZE    INFO      COUNTS  OPT
+
+SECTION=P_TOP
+FILE=C:\Users\Ceddy D\Documents\CASIO\fx-9860G SDK\ENGINE\Debug\main.obj
+                                  00300200  0030020b         c
+  _InitializeSystem
+                                  00300200         c   func ,g         * 
+
+SECTION=P
+FILE=C:\Users\Ceddy D\Documents\CASIO\fx-9860G SDK\ENGINE\Debug\getkey.obj
+                                  0030020c  00300299        8e
+  _getkey
+                                  0030020c         0   none ,g         * 
+  _system_menu
+                                  00300248         0   none ,g         * 
+  syscall_table
+                                  00300288         0   none ,l         * 
+  sc_ClearKeyBuffer
+                                  0030028c         0   none ,l         * 
+  sc_GetKeyWait
+                                  00300290         0   none ,l         * 
+  sc_PutMatrixCode
+                                  00300294         0   none ,l         * 
+  matrixcode_menu
+                                  00300298         0   none ,l         * 
+FILE=C:\Users\Ceddy D\Documents\CASIO\fx-9860G SDK\ENGINE\Debug\main.obj
+                                  0030029c  003003c3       128
+  _AddIn_main
+                                  0030029c       128   func ,g         * 
+FILE=C:\Users\Ceddy D\Documents\CASIO\fx-9860G SDK\ENGINE\Debug\SH4_compatibility.obj
+                                  003003c4  003005df       21c
+  _OSVersionAsInt
+                                  003003c4        3e   func ,g         * 
+  _delay
+                                  00300402        10   func ,g         * 
+  _CheckKeyRow
+                                  00300412        ee   func ,g         * 
+  _KeyDown
+                                  00300500        90   func ,g         * 
+  _GetKeyMod
+                                  00300590        50   func ,g         * 
+FILE=C:\Users\Ceddy D\Documents\CASIO\fx-9860G SDK\ENGINE\Debug\toast_engine.obj
+                                  003005e0  003008a3       2c4
+  _Init_Sprite
+                                  003005e0        20   func ,g         * 
+  _Draw_Sprite_Scale
+                                  00300600        d2   func ,g         * 
+  _Draw_Sprite
+                                  003006d2        36   func ,g         * 
+  _Init_Tileset
+                                  00300708        80   func ,g         * 
+  _Init_Tilemap
+                                  00300788        2a   func ,g         * 
+  _Draw_Tilemap
+                                  003007b2        f2   func ,g         * 
+FILE=C:\Program Files\CASIO\fx-9860G SDK\OS\FX\lib\setup.obj
+                                  003008a4  003009bf       11c
+  ___LINK_PROTECT
+                                  003008a4         4   func ,g         * 
+  _SetQuitHandler
+                                  003008a8         6   func ,g         * 
+  _OnAppCloseDefault
+                                  003008ae        54   func ,g         * 
+  __INITSCT_ADDIN
+                                  00300902        48   func ,g         * 
+  _INIT_ADDIN_APPLICATION
+                                  0030094a        76   func ,g         * 
+FILE=__divls
+                                  003009c0  00300a73        b4
+  __divls
+                                  003009c0         0   none ,g         * 
+  divls_zero
+                                  00300a5e         0   none ,l         * 
+  A_errno
+                                  00300a6c         0   none ,l         * 
+  n_zerono
+                                  00300a70         0   none ,l         * 
+FILE=__modls
+                                  00300a74  00300b3b        c8
+  __modls
+                                  00300a74         0   none ,g         * 
+  modls_L
+                                  00300b1a         0   none ,l         * 
+  modls_zero
+                                  00300b26         0   none ,l         * 
+  A_errno
+                                  00300b34         0   none ,l         * 
+  n_zerono
+                                  00300b38         0   none ,l         * 
+FILE=__q_fmvn
+                                  00300b3c  00300bdf        a4
+  __quick_evn_mvn
+                                  00300b3c         0   none ,g         * 
+  __quick_odd_mvn
+                                  00300b48         0   none ,g         * 
+  A_FMVN_TBL
+                                  00300b54         0   none ,l         * 
+  FMVN_64
+                                  00300b5a         0   none ,l         * 
+  FMVN_60
+                                  00300b5e         0   none ,l         * 
+  FMVN_56
+                                  00300b62         0   none ,l         * 
+  FMVN_52
+                                  00300b66         0   none ,l         * 
+  FMVN_48
+                                  00300b6a         0   none ,l         * 
+  FMVN_44
+                                  00300b6e         0   none ,l         * 
+  FMVN_40
+                                  00300b72         0   none ,l         * 
+  FMVN_36
+                                  00300b76         0   none ,l         * 
+  FMVN_32
+                                  00300b7a         0   none ,l         * 
+  FMVN_28
+                                  00300b7e         0   none ,l         * 
+  FMVN_24
+                                  00300b82         0   none ,l         * 
+  FMVN_20
+                                  00300b86         0   none ,l         * 
+  FMVN_16
+                                  00300b8a         0   none ,l         * 
+  FMVN_12
+                                  00300b8e         0   none ,l         * 
+  FMVN_8
+                                  00300b92         0   none ,l         * 
+  FMVN_4
+                                  00300b96         0   none ,l         * 
+  FMVN_0
+                                  00300b98         0   none ,l         * 
+  FMVN_TBL
+                                  00300b9c         0   none ,l         * 
+FILE=memcpy
+                                  00300be0  00300c9d        be
+  _memcpy
+                                  00300be0        be   func ,g         * 
+FILE=_Bdel_cychdr
+                                  00300ca0  00300caf        10
+  _Bdel_cychdr
+                                  00300ca0         0   none ,g         * 
+FILE=_Bdisp_AllClr_DD
+                                  00300cb0  00300cbf        10
+  _Bdisp_AllClr_DD
+                                  00300cb0         0   none ,g         * 
+FILE=_Bdisp_AllClr_DDVRAM
+                                  00300cc0  00300ccf        10
+  _Bdisp_AllClr_DDVRAM
+                                  00300cc0         0   none ,g         * 
+FILE=_Bdisp_AllClr_VRAM
+                                  00300cd0  00300cdf        10
+  _Bdisp_AllClr_VRAM
+                                  00300cd0         0   none ,g         * 
+FILE=_Bdisp_PutDisp_DD
+                                  00300ce0  00300cef        10
+  _Bdisp_PutDisp_DD
+                                  00300ce0         0   none ,g         * 
+FILE=_Bdisp_SetPoint_VRAM
+                                  00300cf0  00300cff        10
+  _Bdisp_SetPoint_VRAM
+                                  00300cf0         0   none ,g         * 
+FILE=_BfileFLS_CloseFile
+                                  00300d00  00300d0f        10
+  _BfileFLS_CloseFile
+                                  00300d00         0   none ,g         * 
+FILE=_Bkey_Set_RepeatTime_Default
+                                  00300d10  00300d1f        10
+  _Bkey_Set_RepeatTime_Default
+                                  00300d10         0   none ,g         * 
+FILE=_CallbackAtQuitMainFunction
+                                  00300d20  00300d2f        10
+  _CallbackAtQuitMainFunction
+                                  00300d20         0   none ,g         * 
+FILE=_flsFindClose
+                                  00300d30  00300d3f        10
+  _flsFindClose
+                                  00300d30         0   none ,g         * 
+FILE=_GLibAddinAplExecutionCheck
+                                  00300d40  00300d4f        10
+  _GLibAddinAplExecutionCheck
+                                  00300d40         0   none ,g         * 
+FILE=_Hmem_SetMMU
+                                  00300d50  00300d5f        10
+  _Hmem_SetMMU
+                                  00300d50         0   none ,g         * 
+FILE=_malloc
+                                  00300d60  00300d6f        10
+  _malloc
+                                  00300d60         0   none ,g         * 
+FILE=timer
+                                  00300d70  00300e6f       100
+  _GetSDKLibraryVersion
+                                  00300d70         6   func ,g         * 
+  _SetTimer
+                                  00300d76        54   func ,g         * 
+  _KillTimer
+                                  00300dca        44   func ,g         * 
+  _Sleep
+                                  00300e0e        62   func ,g         * 
+FILE=_Bcre_cychdr
+                                  00300e70  00300e7f        10
+  _Bcre_cychdr
+                                  00300e70         0   none ,g         * 
+FILE=_BSrl_DummyWAIT
+                                  00300e80  00300e8f        10
+  _BSrl_DummyWAIT
+                                  00300e80         0   none ,g         * 
+FILE=_Bsta_cychdr
+                                  00300e90  00300e9f        10
+  _Bsta_cychdr
+                                  00300e90         0   none ,g         * 
+FILE=_Bstp_cychdr
+                                  00300ea0  00300eaf        10
+  _Bstp_cychdr
+                                  00300ea0         0   none ,g         * 
+
+SECTION=C
+FILE=C:\Users\Ceddy D\Documents\CASIO\fx-9860G SDK\ENGINE\Debug\main.obj
+                                  00300eb0  0030124f       3a0
+  _debugSprite1
+                                  00300eb0       108   data ,g         * 
+  _debugSprite2
+                                  00300fb8       108   data ,g         * 
+  _debugSprite3
+                                  003010c0       108   data ,g         * 
+  _debugMap1
+                                  003011c8        88   data ,g         * 
+FILE=C:\Users\Ceddy D\Documents\CASIO\fx-9860G SDK\ENGINE\Debug\SH4_compatibility.obj
+                                  00301250  0030125f        10
+  _sc0015
+                                  00301250        10   data ,g         * 
+FILE=addin_sct
+                                  0030126c  0030127f        14
+  _B_BGN
+                                  0030126c         0   none ,g         * 
+  _B_END
+                                  00301270         0   none ,g         * 
+  _R_BGN
+                                  00301274         0   none ,g         * 
+  _R_END
+                                  00301278         0   none ,g         * 
+  _D_ROM
+                                  0030127c         0   none ,g         * 
+
+SECTION=B_BR_Size
+FILE=C:\Users\Ceddy D\Documents\CASIO\fx-9860G SDK\ENGINE\Debug\main.obj
+                                  08100000  08100003         4
+  _BR_Size
+                                  08100000         4   data ,g         * 
+
+SECTION=B
+FILE=_errno
+                                  08100004  08100007         4
+  __errno
+                                  08100004         4   data ,g         * 
+
+SECTION=R
+FILE=C:\Program Files\CASIO\fx-9860G SDK\OS\FX\lib\setup.obj
+                                  08100008  0810000b         4
+  _gb_OnAppClose
+                                  08100008         4   data ,g         * 
+
+Absolute value symbols
+FILE=__divls
+  zerodiv
+                                  0000044e         0   none ,l         * 
+FILE=__modls
+  zerodiv
+                                  0000044e         0   none ,l         * 
+FILE=_Bdel_cychdr
+  __JumpTableTOP
+                                  80010070         0   none ,l         * 
+FILE=_Bdisp_AllClr_DD
+  __JumpTableTOP
+                                  80010070         0   none ,l         * 
+FILE=_Bdisp_AllClr_DDVRAM
+  __JumpTableTOP
+                                  80010070         0   none ,l         * 
+FILE=_Bdisp_AllClr_VRAM
+  __JumpTableTOP
+                                  80010070         0   none ,l         * 
+FILE=_Bdisp_PutDisp_DD
+  __JumpTableTOP
+                                  80010070         0   none ,l         * 
+FILE=_Bdisp_SetPoint_VRAM
+  __JumpTableTOP
+                                  80010070         0   none ,l         * 
+FILE=_BfileFLS_CloseFile
+  __JumpTableTOP
+                                  80010070         0   none ,l         * 
+FILE=_Bkey_Set_RepeatTime_Default
+  __JumpTableTOP
+                                  80010070         0   none ,l         * 
+FILE=_CallbackAtQuitMainFunction
+  __JumpTableTOP
+                                  80010070         0   none ,l         * 
+FILE=_flsFindClose
+  __JumpTableTOP
+                                  80010070         0   none ,l         * 
+FILE=_GLibAddinAplExecutionCheck
+  __JumpTableTOP
+                                  80010070         0   none ,l         * 
+FILE=_Hmem_SetMMU
+  __JumpTableTOP
+                                  80010070         0   none ,l         * 
+FILE=_malloc
+  __JumpTableTOP
+                                  80010070         0   none ,l         * 
+FILE=_Bcre_cychdr
+  __JumpTableTOP
+                                  80010070         0   none ,l         * 
+FILE=_BSrl_DummyWAIT
+  __JumpTableTOP
+                                  80010070         0   none ,l         * 
+FILE=_Bsta_cychdr
+  __JumpTableTOP
+                                  80010070         0   none ,l         * 
+FILE=_Bstp_cychdr
+  __JumpTableTOP
+                                  80010070         0   none ,l         * 
+
+*** Delete Symbols ***
+
+SYMBOL                                SIZE    INFO
+
+*** Variable Accessible with Abs8 ***
+
+SYMBOL                                SIZE    COUNTS  OPTIMIZE
+
+*** Variable Accessible with Abs16 ***
+
+SYMBOL                                SIZE    COUNTS  OPTIMIZE
+
+*** Function Call ***
+
+SYMBOL                              COUNTS  OPTIMIZE
