@@ -24,13 +24,16 @@ void Init_Sprite(Sprite *outputSprite, int *inputSprite)
 }
 
 
-void Draw_Sprite_Scale(int x, int y, Sprite sprite, int scaleX, int scaleY, Camera camera)
+int Draw_Sprite_Scale(int x, int y, Sprite sprite, int scaleX, int scaleY, Camera camera)
 {
 	// Scaled X and Y size of sprite.
 	int scaledXMax = sprite.xMax*scaleX/100 * camera.scale/100;
 	int scaledYMax = sprite.yMax*scaleY/100 * camera.scale/100;
 	int i, j;
 	int a, b;
+	
+	// Stops the function if the sprite cannot be drawn.
+	if (x+camera.x > 127 || y+camera.y > 63 || x+camera.x+sprite.xMax < 0 || y+camera.y+sprite.yMax < 0) return 1;
 	
 	// For every point on the scaled sprite, draw the correct color.
 	for (i = 0; i < scaledXMax; i++)
@@ -41,16 +44,23 @@ void Draw_Sprite_Scale(int x, int y, Sprite sprite, int scaleX, int scaleY, Came
 			a = (i * sprite.xMax) / scaledXMax + 2;				// ( To avoid having to type the same equation over and over.
 			b = (j * sprite.xMax) / scaledYMax * sprite.xMax;			// I'm unsure how much time this actually saves. :P )
 			
-			if (sprite.data[a + b] != 3) Bdisp_SetPoint_VRAM(x+i+camera.x, y+j+camera.y, sprite.data[a + b]);
+			if (
+			sprite.data[a + b] != 3 && 
+			x+i+camera.x > -1 && 
+			x+i+camera.x < 128 &&
+			y+j+camera.y > -1 &&
+			y+j+camera.y < 64
+			) Bdisp_SetPoint_VRAM(x+i+camera.x, y+j+camera.y, sprite.data[a + b]);
 		}
 	}
+	return 0;
 }
 
 
-void Draw_Sprite(int x, int y, Sprite sprite)
+int Draw_Sprite(int x, int y, Sprite sprite)
 {
 	Camera c = {0,0,100};
-	Draw_Sprite_Scale(x, y, sprite, 100, 100, c);	// Draws the sprite normally.
+	return Draw_Sprite_Scale(x, y, sprite, 100, 100, c);	// Draws the sprite normally.
 }
 
 

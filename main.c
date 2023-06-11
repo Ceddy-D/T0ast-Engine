@@ -46,10 +46,10 @@ const int debugSprite3[] =
 const int debugMap1[] =
 {
 8,4,
-2,2,2,2,2,2,2,2,
-0,0,0,0,0,0,0,0,
--1,-1,-1,-1,-1,-1,-1,-1,
-1,1,1,1,1,1,1,1
+2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,
+1,1,1,1,1,1,1,1.1,1,1,1,1,1,1,1
 };
 
 int AddIn_main(int isAppli, unsigned short OptionNum)
@@ -61,6 +61,7 @@ int AddIn_main(int isAppli, unsigned short OptionNum)
 	
 	c.x = 0;
 	c.y = 0;
+	c.scale = 100;
 	
 	Init_Sprite(&s1, debugSprite1);
 	Init_Sprite(&s2, debugSprite2);
@@ -73,12 +74,15 @@ int AddIn_main(int isAppli, unsigned short OptionNum)
 	while(1)
 	{
 		if (IsKeyDown(KEY_CTRL_MENU)) system_menu();
+		if (IsKeyDown(KEY_CTRL_UP)) c.y--;
+		if (IsKeyDown(KEY_CTRL_DOWN)) c.y++;
+		if (IsKeyDown(KEY_CTRL_LEFT)) c.x--;
+		if (IsKeyDown(KEY_CTRL_RIGHT)) c.x++;
+		if (IsKeyDown(KEY_CTRL_F1)) c.scale--;
+		if (IsKeyDown(KEY_CTRL_F6)) c.scale++;
 		
 		Bdisp_AllClr_VRAM();
 		
-		c.scale = 100;
-		Draw_Tilemap(tmap, c);
-		c.scale = 400;
 		Draw_Tilemap(tmap, c);
 		
 		Bdisp_AllClr_DD();

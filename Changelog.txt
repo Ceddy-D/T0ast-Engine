@@ -4,3 +4,7 @@ T0ast Engine Changelog:
 0.1 - 2023-06-08:
 - First version.
 - Capable of drawing sprites and tilemaps.
+
+0.1.1 - 2023-06-10:
+- Made Draw_Sprite() and Draw_Sprite_Scale() more efficient by immidiately terminating if the sprite is out of view as well as only drawing the parts that are in view.
+- Draw_Sprite() and Draw_Sprite_Scale() now return integers. 1 if a sprite is drawn and 0 if a sprite is not drawn.

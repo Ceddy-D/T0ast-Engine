@@ -65,8 +65,9 @@ void Init_Sprite(Sprite *sprite, int *templateSprite);
 ** parameter sprite - The sprite to be drawn.
 ** parameter scaleX - the percentage scale on the X axis.
 ** parameter scaleY - the percentage scale on the Y axis.
+** return - Returns 1 is sprite is drawn and 0 if sprite is not drawn.
 */
-void Draw_Sprite_Scale(int x, int y, Sprite sprite, int scaleX, int scaleY, Camera camera);
+int Draw_Sprite_Scale(int x, int y, Sprite sprite, int scaleX, int scaleY, Camera camera);
 
 /*
 ** Draws sprite at ( x , y ) scaled to 100%.
@@ -74,8 +75,9 @@ void Draw_Sprite_Scale(int x, int y, Sprite sprite, int scaleX, int scaleY, Came
 ** parameter x - Horizontal position of top-left pixel of drawn sprite.
 ** parameter y - Vertical position of top-left pixel of drawn sprite.
 ** parameter sprite - The sprite to be drawn.
+** return - Returns 1 is sprite is drawn and 0 if sprite is not drawn.
 */
-void Draw_Sprite(int x, int y, Sprite sprite);
+int Draw_Sprite(int x, int y, Sprite sprite);
 
 /*
 ** Initializes Tileset's sprites.
