@@ -11,3 +11,18 @@ Address=80000000:88023EB8
 Count=0000000C
 Name=Draw_Sprite_Scale:sprite
 Flags=00000042
+
+[Breakpoint]
+Address=80000000:88024086
+Flags=00000042
+
+[Breakpoint]
+Address=80000000:88023F64
+Count=00000004
+Name=AddIn_main:tset
+Flags=00000042
+
+[Breakpoint]
+File=C:\Users\Cedric\Documents\CASIO\fx-9860G SDK\T0ast-Engine-main\main.c
+Line=70
+Flags=00001012

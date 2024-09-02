@@ -3,7 +3,6 @@
 
 #include "toast_engine.h"
 
-
 void Init_Sprite(Sprite *outputSprite, int *inputSprite)
 {
 	int size;
@@ -21,46 +20,21 @@ void Init_Sprite(Sprite *outputSprite, int *inputSprite)
 	
 	// Points output sprite to input sprite.
 	outputSprite->data = inputSprite;
+	
+	outputSprite->visible = 1;
 }
 
-
-int Draw_Sprite_Scale(int x, int y, Sprite sprite, int scaleX, int scaleY, Camera camera)
+int Draw_Sprite(Sprite sprite, Transform transform)
 {
-	// Scaled X and Y size of sprite.
-	int scaledXMax = sprite.xMax*scaleX/100 * camera.scale/100;
-	int scaledYMax = sprite.yMax*scaleY/100 * camera.scale/100;
-	int i, j;
-	int a, b;
+	int i;
+	int a,b;
 	
-	// Stops the function if the sprite cannot be drawn.
-	if (x+camera.x > 127 || y+camera.y > 63 || x+camera.x+sprite.xMax < 0 || y+camera.y+sprite.yMax < 0) return 1;
-	
-	// For every point on the scaled sprite, draw the correct color.
-	for (i = 0; i < scaledXMax; i++)
+	for (i = 0; i < sprite.xMax*sprite.yMax; i++)
 	{
-		for (j = 0; j < scaledYMax; j++)
-		{
-			
-			a = (i * sprite.xMax) / scaledXMax + 2;				// ( To avoid having to type the same equation over and over.
-			b = (j * sprite.xMax) / scaledYMax * sprite.xMax;			// I'm unsure how much time this actually saves. :P )
-			
-			if (
-			sprite.data[a + b] != 3 && 
-			x+i+camera.x > -1 && 
-			x+i+camera.x < 128 &&
-			y+j+camera.y > -1 &&
-			y+j+camera.y < 64
-			) Bdisp_SetPoint_VRAM(x+i+camera.x, y+j+camera.y, sprite.data[a + b]);
-		}
+		a = i%sprite.xMax+transform.x;
+		b = i/sprite.xMax+transform.y;
+		if (sprite.data[i+2] != 3) Bdisp_SetPoint_VRAM(a, b, sprite.data[i+2]);
 	}
-	return 0;
-}
-
-
-int Draw_Sprite(int x, int y, Sprite sprite)
-{
-	Camera c = {0,0,100};
-	return Draw_Sprite_Scale(x, y, sprite, 100, 100, c);	// Draws the sprite normally.
 }
 
 
@@ -93,10 +67,6 @@ void Init_Tilemap(Tilemap *tilemap, Tileset tileset, int *map)
 	
 	tilemap->tileset = tileset;
 	
-	tilemap->scaleX = 100;
-	tilemap->scaleY = 100;
-	tilemap->originX = 0;
-	tilemap->originY = 0;
 	tilemap->pixelSpacing = tileset.sprites[0].xMax;
 	
 	tilemap->xMax = map[0];
@@ -106,7 +76,7 @@ void Init_Tilemap(Tilemap *tilemap, Tileset tileset, int *map)
 }
 
 
-void Draw_Tilemap(Tilemap tilemap, Camera camera)
+void Draw_Tilemap(Tilemap tilemap, Camera camera, Transform transform)
 {
 	int i,j;
 	Sprite s;
@@ -115,17 +85,15 @@ void Draw_Tilemap(Tilemap tilemap, Camera camera)
 		for (j = 0; j < tilemap.yMax; j++)
 		{
 			
-			if (tilemap.map[i+2 + j*tilemap.xMax] != -1) 
-				Draw_Sprite_Scale
-				(
-				(i*tilemap.pixelSpacing) * (tilemap.scaleX/100) * (camera.scale/100) + tilemap.originX + camera.x,
-				(j*tilemap.pixelSpacing) * (tilemap.scaleY/100) * (camera.scale/100) + tilemap.originY + camera.y,
-				tilemap.tileset.sprites[tilemap.map[i+2 + j*tilemap.xMax]],
-				tilemap.scaleX, 
-				tilemap.scaleY,
-				camera
-				);
+			if (tilemap.map[i+2 + j*tilemap.xMax] != -1)
+				Draw_Sprite(tilemap.tileset.sprites[tilemap.map[i+2 + j*tilemap.xMax]], transform);
 		}
 	}
-	
 }
+
+void Attach_Components(Node *node, Components *components)
+{
+	node->data = (void *)components;
+}
+
+

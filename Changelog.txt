@@ -8,3 +8,34 @@ T0ast Engine Changelog:
 0.1.1 - 2023-06-10:
 - Made Draw_Sprite() and Draw_Sprite_Scale() more efficient by immidiately terminating if the sprite is out of view as well as only drawing the parts that are in view.
 - Draw_Sprite() and Draw_Sprite_Scale() now return integers. 1 if a sprite is drawn and 0 if a sprite is not drawn.
+
+0.2 - 2024-09-02:
+- Credited myself in toast_engine.h.
+- Prepared the engine to work as a game engine and general rewriting.
+-
+- [Added] Node object to prepare for adding game elements.
+Node has "*data" variable to hold any arbitrary data.
+Node has "**tags" variable to hold any number of tags.
+- [Added] Components object to help work with Node.
+Components has pointers to all other structs other than Node itself.
+- [Added] Transform object to abstract transform operations from other objects.
+Transform has "x","y" floats as coordinates. Default is 0.
+Transform has "scaleX","scaleY" floats as scale factors. Default is 100.
+Transform has "roatation" float. Currently unused.
+- [Added] default Transform and Camera macros.
+- [Added] "visible" int to Sprite. Currently unused.
+- [Added] Transform value to Camera. 
+- [Added] Node base value to Camera. Should probably do the same to all nodes at some point.
+- [Added] Attach_Components() function to assist in attaching Components to Nodes.
+Attach_Components() assigns "components" to "node.data".
+- [Added] parameter "transform" to Draw_Tilemap().
+- 
+- [Removed] "x", "y", and "scale" values from Camera.
+- [Removed] transform values from Tilemap.
+- [Removed] Draw_Sprite_Scale() until other functions are properly built up.
+- [Removed] most of Draw_Tilemap()'s original funtionality. 
+- 
+- [Edited] Init_Sprite to now set outputSprite as visible.
+- [Edited] Draw_Sprite() to be far simpler.
+- [Edited] parts of Init_Tilemap() to account for edited struct.
+- [Edited] main.c in order to have it work with the new engine version.

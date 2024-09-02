@@ -1,8 +1,10 @@
 /////////////////////////////
 //                         //
-//  T0AST ENGINE VER. 0.1  //
+//  T0AST ENGINE VER. 0.2  //
 //                         //
-//       2023-06-08        //
+//       2024-08-28        //
+//                         //
+//   Created by Ceddy D    //
 //                         //
 /////////////////////////////
 
@@ -11,38 +13,62 @@
 #define toast_engine_h
 
 
+////////////
+// Macros //
+////////////
+
+#define DEFAULTTRANSFORM {0,0,100,100,0}
+#define DEFAULTCAMERA {{0,0},{0,0,100,100,0}}
+
+
 ///////////////
 //  Structs  //
 ///////////////
 
-typedef struct{
+typedef struct Node{
+	void *data;		// Component data.
+	char** tags;	// User defined tags.
+} Node;
+
+typedef struct Transform{
+	float x,y;				// X and Y coords.
+	float scaleX, scaleY;	// X and Y scale of node.
+	float rotation;			// Rotation in degrees.
+} Transform;
+
+typedef struct Sprite{
 	int *data;	// Pointer to sprite contents.
 	int xMax;	// Number of horizontal pixels, or columns, the sprite is.
 	int yMax;	// Number of vertical pixels, or rows, the sprite is.
+	
+	int visible;// Boolean flag for visiblility. 1 visible 0 invisible.
 } Sprite;
 
-typedef struct{
-	int x;		// X coord of upper left corner of camera.
-	int y;		// Y coord of upper left corner of camera.
-	int scale;	// Scale factor (Change logic to Z coord one day).
+typedef struct Camera{
+	Node base;
+	Transform transform;
 } Camera;
 
-typedef struct{
+typedef struct Tileset{
 	Sprite *sprites;	// Table of tiles in the tileset.
 } Tileset;
 
-typedef struct{
+typedef struct Tilemap{
 	Tileset tileset;	// The tileset used by this tilemap.
-	int scaleX;			// X Scale factor of tilemap.
-	int scaleY;			// Y scale factor of tilemap.
-	int originX;		// X coord of upper left corner of tilemap.
-	int originY;		// Y coord of upper left corner of tilemap.
 	int pixelSpacing;	// Pixels apart each sprites are. Defaults to xMax of .tileset.sprite[0].
 	
 	int *map;			// Table of tiles of the tilemap.
 	int xMax;			// Number of horizontal sprites, or colums, the tilemap is.
 	int yMax;			// Number of vertical sprites, or rows, the tilemap is.
 } Tilemap;
+
+typedef struct Components{
+	Transform *transform;
+	Sprite *sprite;
+	Camera *camera;
+	Tileset *tileset;
+	Tilemap *tilemap;
+} Components;
 
 
 /////////////////
@@ -58,18 +84,6 @@ typedef struct{
 void Init_Sprite(Sprite *sprite, int *templateSprite);
 
 /*
-** draws sprite at ( x , y ) scaled to a percentage.
-** =================================================
-** parameter x - Horizontal position of top-left pixel of drawn sprite.
-** parameter y - Vertical position of top-left pixel of drawn sprite.
-** parameter sprite - The sprite to be drawn.
-** parameter scaleX - the percentage scale on the X axis.
-** parameter scaleY - the percentage scale on the Y axis.
-** return - Returns 1 is sprite is drawn and 0 if sprite is not drawn.
-*/
-int Draw_Sprite_Scale(int x, int y, Sprite sprite, int scaleX, int scaleY, Camera camera);
-
-/*
 ** Draws sprite at ( x , y ) scaled to 100%.
 ** =========================================
 ** parameter x - Horizontal position of top-left pixel of drawn sprite.
@@ -77,7 +91,8 @@ int Draw_Sprite_Scale(int x, int y, Sprite sprite, int scaleX, int scaleY, Camer
 ** parameter sprite - The sprite to be drawn.
 ** return - Returns 1 is sprite is drawn and 0 if sprite is not drawn.
 */
-int Draw_Sprite(int x, int y, Sprite sprite);
+int Draw_Sprite(Sprite sprite, Transform transform);
+int Draw_Sprite_Camera(Sprite sprite, Transform transform, Camera camera);
 
 /*
 ** Initializes Tileset's sprites.
@@ -91,7 +106,7 @@ void Init_Tileset(Tileset *tileset, int numSprites, ...);
 /*
 ** Initializes a Tilemap's tileset and map.
 ** ========================================
-** paramerter *tilemap - The tilemap to be initialized.
+** parameter *tilemap - The tilemap to be initialized.
 ** parameter tileset - The tilemap's tileset.
 ** parameter *map - The tilemap's map.
 */
@@ -103,8 +118,15 @@ void Init_Tilemap(Tilemap *tilemap, Tileset tileset, int *map);
 ** parameter tilemap - The tilemap to draw to the screen.
 ** parameter camera - The camera that looks at the tilemap.
 */
-void Draw_Tilemap(Tilemap tilemap, Camera camera);
+void Draw_Tilemap(Tilemap tilemap, Camera camera, Transform transform);
 
+/*
+** Attaches any number of components to a node's data.
+** ===================================================
+** parameter *node - Pointer to Node object to be edited.
+** parameter *components - Pointer to Components object to add to *node.
+*/
+void Attach_Components(Node *node, Components *components);
 
 
 #endif

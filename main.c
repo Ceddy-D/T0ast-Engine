@@ -57,12 +57,7 @@ int AddIn_main(int isAppli, unsigned short OptionNum)
 	Sprite s1, s2, s3;
 	Tileset tset;
 	Tilemap tmap;
-	Camera c;
-	
-	c.x = 0;
-	c.y = 0;
-	c.scale = 100;
-	
+	Transform t = DEFAULTTRANSFORM;
 	Init_Sprite(&s1, debugSprite1);
 	Init_Sprite(&s2, debugSprite2);
 	Init_Sprite(&s3, debugSprite3);
@@ -74,16 +69,14 @@ int AddIn_main(int isAppli, unsigned short OptionNum)
 	while(1)
 	{
 		if (IsKeyDown(KEY_CTRL_MENU)) system_menu();
-		if (IsKeyDown(KEY_CTRL_UP)) c.y--;
-		if (IsKeyDown(KEY_CTRL_DOWN)) c.y++;
-		if (IsKeyDown(KEY_CTRL_LEFT)) c.x--;
-		if (IsKeyDown(KEY_CTRL_RIGHT)) c.x++;
-		if (IsKeyDown(KEY_CTRL_F1)) c.scale--;
-		if (IsKeyDown(KEY_CTRL_F6)) c.scale++;
+		if (IsKeyDown(KEY_CTRL_UP)) t.y--;
+		if (IsKeyDown(KEY_CTRL_DOWN)) t.y++;
+		if (IsKeyDown(KEY_CTRL_LEFT)) t.x--;
+		if (IsKeyDown(KEY_CTRL_RIGHT)) t.x++;
 		
 		Bdisp_AllClr_VRAM();
 		
-		Draw_Tilemap(tmap, c);
+		Draw_Sprite(s1, t);
 		
 		Bdisp_AllClr_DD();
 		Bdisp_PutDisp_DD();
