@@ -18,7 +18,7 @@
 ////////////
 
 #define DEFAULTTRANSFORM {0,0,100,100,0}
-#define DEFAULTCAMERA {{0,0},{0,0,100,100,0}}
+#define DEFAULTCAMERA {{0,0},{DEFAULTTRANSFORM}}
 
 
 ///////////////
@@ -27,7 +27,11 @@
 
 typedef struct Node{
 	void *data;		// Component data.
-	char** tags;	// User defined tags.
+	char **tags;	// User defined tags.
+	
+	struct Node *parent;	// Parent node.
+	struct Node *child;		// Child nodes.
+	int children;			// Number of children.
 } Node;
 
 typedef struct Transform{
@@ -37,16 +41,15 @@ typedef struct Transform{
 } Transform;
 
 typedef struct Sprite{
-	int *data;	// Pointer to sprite contents.
-	int xMax;	// Number of horizontal pixels, or columns, the sprite is.
-	int yMax;	// Number of vertical pixels, or rows, the sprite is.
+	int *data;		// Pointer to sprite contents.
+	int xMax;		// Number of horizontal pixels, or columns, the sprite is.
+	int yMax;		// Number of vertical pixels, or rows, the sprite is.
 	
-	int visible;// Boolean flag for visiblility. 1 visible 0 invisible.
+	int visible;	// Boolean flag for visiblility. 1 visible 0 invisible.
 } Sprite;
 
 typedef struct Camera{
-	Node base;
-	Transform transform;
+	Transform transform;	// Transformation of camera. 
 } Camera;
 
 typedef struct Tileset{
@@ -84,15 +87,15 @@ typedef struct Components{
 void Init_Sprite(Sprite *sprite, int *templateSprite);
 
 /*
-** Draws sprite at ( x , y ) scaled to 100%.
-** =========================================
-** parameter x - Horizontal position of top-left pixel of drawn sprite.
-** parameter y - Vertical position of top-left pixel of drawn sprite.
+** Draws sprite at ( transform.x , transform.y )
+** scaled to ( transform.scaleX , transform.scaleY)
+** rotated by ( transform.rotation ) degrees clockwise.
+** ====================================================
 ** parameter sprite - The sprite to be drawn.
+** parameter transform - The transformation to be done to the sprite.
 ** return - Returns 1 is sprite is drawn and 0 if sprite is not drawn.
 */
 int Draw_Sprite(Sprite sprite, Transform transform);
-int Draw_Sprite_Camera(Sprite sprite, Transform transform, Camera camera);
 
 /*
 ** Initializes Tileset's sprites.
@@ -117,6 +120,7 @@ void Init_Tilemap(Tilemap *tilemap, Tileset tileset, int *map);
 ** ==============================
 ** parameter tilemap - The tilemap to draw to the screen.
 ** parameter camera - The camera that looks at the tilemap.
+** parameter transform - The transformation to be done to the tilemap.
 */
 void Draw_Tilemap(Tilemap tilemap, Camera camera, Transform transform);
 

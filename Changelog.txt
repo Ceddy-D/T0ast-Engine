@@ -39,3 +39,10 @@ Attach_Components() assigns "components" to "node.data".
 - [Edited] Draw_Sprite() to be far simpler.
 - [Edited] parts of Init_Tilemap() to account for edited struct.
 - [Edited] main.c in order to have it work with the new engine version.
+
+0.2.1 - 2024-09-03:
+- [Added] "*parent", "**child". and "children" variables in Node. No current functionality.
+- [Removed] "base" from Camera. Nodes will be implemented in another way soon.
+- [Removed] Draw_Sprite_Camera() prototype. There will be other functions to deal with cameras soon.
+- [Edited] DEFAULTCAMERA macro to use DEFAULTTRANSFORM in it.
+- Various small edits to comments.
