@@ -13,6 +13,15 @@
 #define toast_engine_h
 
 
+//////////////
+// Includes //
+//////////////
+
+#include <stdlib.h>	// malloc()
+#include <stdarg.h>	// arg
+#include <math.h>	// sin(), cos()
+
+
 ////////////
 // Macros //
 ////////////
@@ -41,9 +50,9 @@ typedef struct Transform{
 } Transform;
 
 typedef struct Sprite{
-	int *data;		// Pointer to sprite contents.
-	int xMax;		// Number of horizontal pixels, or columns, the sprite is.
-	int yMax;		// Number of vertical pixels, or rows, the sprite is.
+	int *data;	// Pointer to sprite contents.
+	int xMax;	// Number of horizontal pixels, or columns, the sprite is.
+	int yMax;	// Number of vertical pixels, or rows, the sprite is.
 	
 	int visible;	// Boolean flag for visiblility. 1 visible 0 invisible.
 } Sprite;
@@ -60,9 +69,9 @@ typedef struct Tilemap{
 	Tileset tileset;	// The tileset used by this tilemap.
 	int pixelSpacing;	// Pixels apart each sprites are. Defaults to xMax of .tileset.sprite[0].
 	
-	int *map;			// Table of tiles of the tilemap.
-	int xMax;			// Number of horizontal sprites, or colums, the tilemap is.
-	int yMax;			// Number of vertical sprites, or rows, the tilemap is.
+	int *map;	// Table of tiles of the tilemap.
+	int xMax;	// Number of horizontal sprites, or colums, the tilemap is.
+	int yMax;	// Number of vertical sprites, or rows, the tilemap is.
 } Tilemap;
 
 typedef struct Components{
@@ -73,6 +82,9 @@ typedef struct Components{
 	Tilemap *tilemap;
 } Components;
 
+typedef struct Coordinate{
+	float x,y;
+} Coordinate;
 
 /////////////////
 //  Functions  //
@@ -132,5 +144,7 @@ void Draw_Tilemap(Tilemap tilemap, Camera camera, Transform transform);
 */
 void Attach_Components(Node *node, Components *components);
 
+
+//void Sprite_Rotate(sprite Sprite, Transform *transform);
 
 #endif

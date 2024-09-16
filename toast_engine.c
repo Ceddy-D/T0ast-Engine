@@ -1,6 +1,3 @@
-#include <stdlib.h>		//malloc
-#include <stdarg.h>		//arg
-
 #include "toast_engine.h"
 
 void Init_Sprite(Sprite *outputSprite, int *inputSprite)
@@ -84,7 +81,6 @@ void Draw_Tilemap(Tilemap tilemap, Camera camera, Transform transform)
 	{
 		for (j = 0; j < tilemap.yMax; j++)
 		{
-			
 			if (tilemap.map[i+2 + j*tilemap.xMax] != -1)
 				Draw_Sprite(tilemap.tileset.sprites[tilemap.map[i+2 + j*tilemap.xMax]], transform);
 		}
@@ -95,5 +91,46 @@ void Attach_Components(Node *node, Components *components)
 {
 	node->data = (void *)components;
 }
+
+// This is a mess and I probably need to just gut this whole function later.
+/*Sprite Sprite_Rotate(Sprite sprite, Transform *transform);
+{
+	Coordinate *grid = malloc(sizeof(double) * (sprite.xMax*sprite.yMax));
+	Coordinate *roatated = malloc(sizeof(double) * (sprite.xMax*sprite.yMax));
+	Sprite output;
+	
+	double cosTheta = cos(Transform.rotation * M_PI / 180);
+	double sinTheta = sin(Transform.rotation * M_PI / 180);
+	
+	double centerX = sprite.xMax/2 -.5;
+	double centerY = sprite.yMax/2 -.5;
+	
+	int xMin = 0;
+	int yMin = 0;
+	
+	int i;
+	
+	for (i = 0; i < sprite.xMax*sprite.yMax; i++)
+	{
+		grid[i].x = i%sprite.xMax - centerX;
+		grid[i].y = i/sprite.xMax - centerY;
+		
+		rotated[i].x = round(grid[i].x * cosTheta - grid[i].y * sinTheta + centerX);
+		rotated[i].y = round(grid[i].x * sinTheta + grid[i].y * cosTheta + centerY);
+		
+		if(rotated[i].x < xMin) xMin = rotated[i].x;
+		if(rotated[i].y < yMin) yMin = rotated[i].y;
+		if(rotated[i].x < output.xMax) output.xMax = rotated[i].x;
+		if(rotated[i].y < output.yMax) output.yMax = rotated[i].y;
+	}
+	
+	for (i = 0; i < sprite.xMax*sprite.yMax; i++)
+	{
+		output.data[output.xMax*rotated[i].y+rotated[i].x]
+	}
+	
+	transform->x -= output.xMin;
+	transform->y -= output.yMin;
+}*/
 
 

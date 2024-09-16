@@ -46,3 +46,9 @@ Attach_Components() assigns "components" to "node.data".
 - [Removed] Draw_Sprite_Camera() prototype. There will be other functions to deal with cameras soon.
 - [Edited] DEFAULTCAMERA macro to use DEFAULTTRANSFORM in it.
 - Various small edits to comments.
+
+0.2.2 - 2024-09-15:
+- Moved includes from toast_engine.c to toast_engine.h.
+- Mild cleanup.
+- Added simple Coordinate struct.
+- Unfinished rotation code.
