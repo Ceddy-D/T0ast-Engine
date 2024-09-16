@@ -7,81 +7,74 @@ int getkey(void);	// not used
 void system_menu(void);
 
 // For sprite testing
-const int debugSprite1[] =
+
+const unsigned char debugSprite1[] =
 {
-8,8,
-1,1,1,1,0,0,0,0,
-1,1,1,1,0,0,0,0,
-1,1,1,1,0,0,0,0,
-1,1,1,1,0,0,0,0,
-0,0,0,0,1,1,1,1,
-0,0,0,0,1,1,1,1,
-0,0,0,0,1,1,1,1,
-0,0,0,0,1,1,1,1
-};
-const int debugSprite2[] =
-{
-8,8,
-1,1,1,1,0,1,1,1,
-1,1,1,1,0,0,0,1,
-1,1,1,1,0,0,0,1,
-1,1,1,1,0,0,0,0,
-0,0,0,0,1,1,1,1,
-0,0,0,0,1,1,1,1,
-0,0,0,0,1,1,1,1,
-0,0,0,0,1,1,1,1
-};
-const int debugSprite3[] =
-{
-8,8,
+8,8,1,0,1,
 1,1,1,1,1,1,1,1,
 1,1,1,1,1,1,1,1,
-1,1,3,3,3,3,1,1,
-1,1,3,3,3,3,1,1,
-1,1,3,3,3,3,1,1,
-1,1,3,3,3,3,1,1,
+1,1,0,0,0,0,1,1,
+1,1,0,0,0,0,1,1,
+1,1,0,0,0,0,1,1,
+1,1,0,0,0,0,1,1,
 1,1,1,1,1,1,1,1,
 1,1,1,1,1,1,1,1
 };
-const int debugMap1[] =
+
+const unsigned char debugSprite2[] =
 {
-8,4,
-2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
--1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,
-1,1,1,1,1,1,1,1.1,1,1,1,1,1,1,1
+8,8,1,0,0,
+0,0,0,0,0,0,0,1,
+0,0,0,0,0,0,0,1,
+0,0,0,0,0,0,0,1,
+0,0,0,0,0,0,0,1,
+0,0,0,0,0,0,0,1,
+0,0,0,0,0,0,0,1,
+0,0,0,0,0,0,0,1,
+1,1,1,1,1,1,1,1,
+1,1,1,1,1,1,1,1,
+1,1,1,1,1,1,1,1,
+1,1,1,1,1,1,1,1,
+1,1,1,1,1,1,1,1,
+1,1,1,1,0,0,0,1,
+1,1,1,1,0,0,0,1,
+1,1,1,1,0,0,0,1,
+1,1,1,1,1,1,1,1,
 };
 
 int AddIn_main(int isAppli, unsigned short OptionNum)
 {
-	Sprite s1, s2, s3;
+	Sprite s, s2;
 	Tileset tset;
 	Tilemap tmap;
-	Transform t = DEFAULTTRANSFORM;
-	Init_Sprite(&s1, debugSprite1);
-	Init_Sprite(&s2, debugSprite2);
-	Init_Sprite(&s3, debugSprite3);
-	Init_Tileset(&tset, 3,s1,s2,s3);
-	Init_Tilemap(&tmap, tset, debugMap1);
+	Coord c = DEFAULTCOORDINATE;
+	Coord c2 = {56,24};
+	
+	Init_Sprite(&s, debugSprite1);
+	Init_Sprite(&s2,debugSprite2);
 	
 	Bdisp_AllClr_DDVRAM();
-	
 	while(1)
 	{
 		if (IsKeyDown(KEY_CTRL_MENU)) system_menu();
-		if (IsKeyDown(KEY_CTRL_UP)) t.y--;
-		if (IsKeyDown(KEY_CTRL_DOWN)) t.y++;
-		if (IsKeyDown(KEY_CTRL_LEFT)) t.x--;
-		if (IsKeyDown(KEY_CTRL_RIGHT)) t.x++;
+		if (IsKeyDown(KEY_CTRL_UP)) c.y--;
+		if (IsKeyDown(KEY_CTRL_DOWN)) c.y++;
+		if (IsKeyDown(KEY_CTRL_LEFT)) c.x--;
+		if (IsKeyDown(KEY_CTRL_RIGHT)) c.x++;
 		
 		Bdisp_AllClr_VRAM();
 		
-		Draw_Sprite(s1, t);
-		
+		Draw_Sprite(s, c);
+		Draw_Sprite(s2, c2);
+//		Draw_Text("ABC", DEFAULTCOORDINATE);
+		locate(0,0);
 		Bdisp_AllClr_DD();
 		Bdisp_PutDisp_DD();
 		Sleep(5);
 	}
+	
+	
+	
 	return 0;
 }
 

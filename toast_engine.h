@@ -1,8 +1,8 @@
 /////////////////////////////
 //                         //
-//  T0AST ENGINE VER. 0.2  //
+//  T0AST ENGINE VER. 0.3  //
 //                         //
-//       2024-08-28        //
+//       2024-09-16        //
 //                         //
 //   Created by Ceddy D    //
 //                         //
@@ -26,35 +26,44 @@
 // Macros //
 ////////////
 
-#define DEFAULTTRANSFORM {0,0,100,100,0}
-#define DEFAULTCAMERA {{0,0},{DEFAULTTRANSFORM}}
-
+#define DEFAULTCOORDINATE {0,0}
+#define DEFAULTTRANSFORM {DEFAULTCOORDINATE,100,100,0}
+#define DEFAULTCAMERA {DEFAULTTRANSFORM}
+#define DEFAULTFONT {{4}{0b00000100,0b01101001,0b11111001}}
 
 ///////////////
 //  Structs  //
 ///////////////
 
 typedef struct Node{
-	void *data;		// Component data.
-	char **tags;	// User defined tags.
+	void *data;				// Component data.
+	unsigned char **tags;	// User defined tags.
 	
 	struct Node *parent;	// Parent node.
 	struct Node *child;		// Child nodes.
 	int children;			// Number of children.
 } Node;
 
+typedef struct Coordinate{
+	float x,y;
+} Coordinate, Coord;
+
 typedef struct Transform{
-	float x,y;				// X and Y coords.
+	Coordinate coord;		// X and Y coords.
 	float scaleX, scaleY;	// X and Y scale of node.
 	float rotation;			// Rotation in degrees.
 } Transform;
 
 typedef struct Sprite{
-	int *data;	// Pointer to sprite contents.
-	int xMax;	// Number of horizontal pixels, or columns, the sprite is.
-	int yMax;	// Number of vertical pixels, or rows, the sprite is.
+	unsigned char *data;		// Pointer to sprite contents.
+	unsigned char *visibility;	// Determines which pixels are visible.
 	
-	int visible;	// Boolean flag for visiblility. 1 visible 0 invisible.
+	unsigned char xMax;	// Number of horizontal pixels, or columns, the sprite is.
+	unsigned char yMax;	// Number of vertical pixels, or rows, the sprite is.
+	
+	unsigned char visible;	// Boolean flag for visiblility. 1 visible 0 invisible.
+	unsigned char opaque;	// Boolean flag for opacity. 1 opaque 0 transluscent.
+	
 } Sprite;
 
 typedef struct Camera{
@@ -82,9 +91,11 @@ typedef struct Components{
 	Tilemap *tilemap;
 } Components;
 
-typedef struct Coordinate{
-	float x,y;
-} Coordinate;
+typedef struct Font{
+	unsigned int height;
+	unsigned char *c;
+} Font;
+
 
 /////////////////
 //  Functions  //
@@ -95,8 +106,9 @@ typedef struct Coordinate{
 ** ========================================================================================
 ** parameter *sprite - The sprite to be initiated.
 ** parameter *templateSprite - The template to be pointed to.
+** return - returns 0 on success and negative error value on failure.
 */
-void Init_Sprite(Sprite *sprite, int *templateSprite);
+int Init_Sprite(Sprite *sprite, unsigned char *templateSprite);
 
 /*
 ** Draws sprite at ( transform.x , transform.y )
@@ -105,9 +117,8 @@ void Init_Sprite(Sprite *sprite, int *templateSprite);
 ** ====================================================
 ** parameter sprite - The sprite to be drawn.
 ** parameter transform - The transformation to be done to the sprite.
-** return - Returns 1 is sprite is drawn and 0 if sprite is not drawn.
 */
-int Draw_Sprite(Sprite sprite, Transform transform);
+void Draw_Sprite(Sprite sprite, Coordinate coord);
 
 /*
 ** Initializes Tileset's sprites.
@@ -115,8 +126,9 @@ int Draw_Sprite(Sprite sprite, Transform transform);
 ** parameter *tileset - The tileset to be initialized.
 ** parameter numSprites - How many sprites are to be initialized to the tileset.
 ** parameter ... - Sprites to be set to tileset.sprites. 
+** return - returns 0 on success and negative error value on failure.
 */
-void Init_Tileset(Tileset *tileset, int numSprites, ...);
+int Init_Tileset(Tileset *tileset, int numSprites, ...);
 
 /*
 ** Initializes a Tilemap's tileset and map.
@@ -134,7 +146,7 @@ void Init_Tilemap(Tilemap *tilemap, Tileset tileset, int *map);
 ** parameter camera - The camera that looks at the tilemap.
 ** parameter transform - The transformation to be done to the tilemap.
 */
-void Draw_Tilemap(Tilemap tilemap, Camera camera, Transform transform);
+void Draw_Tilemap(Tilemap tilemap, Camera camera, Coordinate coord);
 
 /*
 ** Attaches any number of components to a node's data.
@@ -144,6 +156,9 @@ void Draw_Tilemap(Tilemap tilemap, Camera camera, Transform transform);
 */
 void Attach_Components(Node *node, Components *components);
 
+void Draw_Char(unsigned char character, Coordinate coord, Font f);
+
+void Draw_Text(unsigned char *string, Coordinate coord, Font f);
 
 //void Sprite_Rotate(sprite Sprite, Transform *transform);
 

@@ -52,3 +52,20 @@ Attach_Components() assigns "components" to "node.data".
 - Mild cleanup.
 - Added simple Coordinate struct.
 - Unfinished rotation code.
+
+0.3 - 2024-09-16:
+- Init_Sprite is now completely different. Converting the same input sprites into binary.
+- Input sprites now have slightly larger headers.
+- Draw_Sprite rewritten entirely to draw the new binary format of sprite data. Far faster as a consequence.
+- Init_Tileset changed slightly to return an error value if malloc fails.
+- Added Font struct to prepare for font support.
+- Added Draw_Char and Draw_Text functions to prepare for font support.
+- Added DEFAULTCOORDINATE and DEFAULTFONT macros. DEFAULTFONT is unfinished.
+- Changed Transform to contain Coordinate structure instead of x and y variables.
+- Changed Sprite massively. Now has "visibility" and "opaque" variables. All data is changed to unsigned chars due to binary overhaul.
+- Init_Sprite now returns int based on if malloc succeeded or not.
+- Init_Tileset now returns int based on if malloc succeeded or not.
+- Draw_Sprite now returns void.
+- WIP Draw_Text and Draw_Char functions.
+- Performance improvements. General code commenting.
+- Cleaned up main.c. Main now shows off the drawing and transparency capabilities of Draw_Sprite.
