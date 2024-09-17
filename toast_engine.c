@@ -21,10 +21,10 @@ int Init_Sprite(Sprite *outputSprite, unsigned char *inputSprite)
 	
 	// Allocating memory for the output sprite.
 	outputSprite->data = malloc(outputSprite->xMax * outputSprite->yMax);
-	outputSprite->visibility = malloc(outputSprite->xMax * outputSprite->yMax);
+	outputSprite->mask = malloc(outputSprite->xMax * outputSprite->yMax);
 	// Returning if memory allocation fails.
 	if (!outputSprite->data) return -1;
-	if (!outputSprite->visibility) return -2;
+	if (!outputSprite->mask) return -2;
 	
 	// Goes through every value of inputSprite following the header until the end of the sprite size
 	// and converts the input data into binary in the sprite.data variable.
@@ -45,10 +45,10 @@ int Init_Sprite(Sprite *outputSprite, unsigned char *inputSprite)
 	if(bitIndex != 8) outputSprite->data[byteIndex] = byte;
 	
 	// Rest of the function acts as an else statement to this.
-	// Basically checks if it should write unique data to outputSprite.visibility.
+	// Basically checks if it should write unique data to outputSprite.mask.
 	if (inputSprite[4] == 1)
 	{
-		outputSprite->visibility = outputSprite->data;
+		outputSprite->mask = outputSprite->data;
 		return 0;
 	}
 	
@@ -57,7 +57,7 @@ int Init_Sprite(Sprite *outputSprite, unsigned char *inputSprite)
 	byteIndex = 0;
 	byte = 0;
 	
-	// Goes through every remaining value of inputSprite and adds it to outputSprite.visibility.
+	// Goes through every remaining value of inputSprite and adds it to outputSprite.mask.
 	// Same code block as earlier. Could probably condense this code somehow later.
 	for ( ; inputIndex < outputSprite->xMax * outputSprite->yMax * 2 + headerSize; inputIndex++)
 	{
@@ -66,13 +66,13 @@ int Init_Sprite(Sprite *outputSprite, unsigned char *inputSprite)
 		
 		if(bitIndex == 8)
 		{
-			outputSprite->visibility[byteIndex++] = byte;
+			outputSprite->mask[byteIndex++] = byte;
 			byte = 0;
 			bitIndex = 0;
 		}
 	}
 	// Write any extra data that my remain in case the sprite isn't a multiple of 8 pixels.
-	if(bitIndex != 8) outputSprite->visibility[byteIndex] = byte;
+	if(bitIndex != 8) outputSprite->mask[byteIndex] = byte;
 	
 	return 0;
 }
@@ -99,7 +99,7 @@ void Draw_Sprite(Sprite sprite, Coordinate coord)
 			bitIndex++;
 			
 			// Continues if the current pixel shouldn't change.
-			if (!((sprite.visibility[byteIndex] >> bitPointer) & 1) && sprite.opaque == 0) continue;
+			if (!((sprite.mask[byteIndex] >> bitPointer) & 1) && sprite.opaque == 0) continue;
 			// Calculates x and y coordinates for the pixel
 			x = bitIndex%sprite.xMax+coord.x;
 			y = bitIndex/sprite.xMax+coord.y;

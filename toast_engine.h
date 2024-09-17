@@ -17,9 +17,11 @@
 // Includes //
 //////////////
 
+// Standard Libararies
 #include <stdlib.h>	// malloc()
 #include <stdarg.h>	// arg
 #include <math.h>	// sin(), cos()
+// Cedmade Libraries
 
 
 ////////////
@@ -29,7 +31,7 @@
 #define DEFAULTCOORDINATE {0,0}
 #define DEFAULTTRANSFORM {DEFAULTCOORDINATE,100,100,0}
 #define DEFAULTCAMERA {DEFAULTTRANSFORM}
-#define DEFAULTFONT {{4}{0b00000100,0b01101001,0b11111001}}
+
 
 ///////////////
 //  Structs  //
@@ -56,7 +58,7 @@ typedef struct Transform{
 
 typedef struct Sprite{
 	unsigned char *data;		// Pointer to sprite contents.
-	unsigned char *visibility;	// Determines which pixels are visible.
+	unsigned char *mask;	// Determines which pixels are visible.
 	
 	unsigned char xMax;	// Number of horizontal pixels, or columns, the sprite is.
 	unsigned char yMax;	// Number of vertical pixels, or rows, the sprite is.
