@@ -112,7 +112,7 @@ void Draw_Sprite(Sprite sprite, Coordinate coord)
 		}
 		
 		// Basically the 2nd argument of the for statement. Here to fix a bug.
-		if (sprite.data[byteIndex] == '\0') return;
+		if (byteIndex > sprite.xMax*sprite.yMax) return;
 	}
 }
 
