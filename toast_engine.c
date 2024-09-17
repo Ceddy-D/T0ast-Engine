@@ -105,8 +105,8 @@ void Draw_Sprite(Sprite sprite, Coordinate coord)
 			y = bitIndex/sprite.xMax+coord.y;
 			// Continues if the x or y are out of bounds.
 			// Returns if the sprite will never be rendered.
-			if (x < 0 || y < 0) continue;
-			if (x > 127 || y > 63) return;
+			if (x < 0 || y < 0 || x > 127) continue;
+			if (y > 63) return;
 			// Draw.
 			Bdisp_SetPoint_VRAM(x,y,(sprite.data[byteIndex] >> bitPointer) & 1);
 		}
