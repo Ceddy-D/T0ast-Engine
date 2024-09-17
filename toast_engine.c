@@ -33,7 +33,7 @@ int Init_Sprite(Sprite *outputSprite, unsigned char *inputSprite)
 		byte = (byte << 1) | (inputSprite[inputIndex] & 1);
 		bitIndex++;
 		
-		// If the byte is fully written then wite to outputSprite and reset.
+		// If the byte is fully written then write to outputSprite and reset.
 		if(bitIndex == 8)
 		{
 			outputSprite->data[byteIndex++] = byte;
@@ -90,7 +90,7 @@ void Draw_Sprite(Sprite sprite, Coordinate coord)
 	bitIndex = -1;
 	
 	// Increments through each byte of the sprite data until null.
-	for (byteIndex = 0; sprite.data[byteIndex-1] != '\0'; byteIndex++)
+	for (byteIndex = 0; ; byteIndex++)
 	{
 		// Draws each bit of the current byte to screen.
 		for (bitPointer = 7; bitPointer >= 0; bitPointer--)
@@ -110,6 +110,9 @@ void Draw_Sprite(Sprite sprite, Coordinate coord)
 			// Draw.
 			Bdisp_SetPoint_VRAM(x,y,(sprite.data[byteIndex] >> bitPointer) & 1);
 		}
+		
+		// Basically the 2nd argument of the for statement. Here to fix a bug.
+		if (sprite.data[byteIndex] == '\0') return;
 	}
 }
 
