@@ -82,3 +82,4 @@ Attach_Components() assigns "components" to "node.data".
 - Fixed ANOTHER bug in Draw_Sprite where it would attempt to access sprite.mask when it is null. It still can but it shouldn't ever happen if the function is used correctly.
 - Changed main.c around to show off the new Font function. It seems to work decently well but most of the sprites are messed up for some reason.
 - Also removed debugSprite2 because that is now the CATTO global. :3
+p.s. Also added a nice little script to convert data to sprite hex.
