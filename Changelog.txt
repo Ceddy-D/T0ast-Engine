@@ -69,3 +69,16 @@ Attach_Components() assigns "components" to "node.data".
 - WIP Draw_Text and Draw_Char functions.
 - Performance improvements. General code commenting.
 - Cleaned up main.c. Main now shows off the drawing and transparency capabilities of Draw_Sprite.
+
+0.3.1 - 2024-09-18:
+- Fixed a few bugs in Draw_Sprite that caused rendering glitches and memory involved crashes.
+- Renamed Sprite.visibility to Sprite.mask.
+- Created toast_fonts.h and toast_fonts.c files.
+- Hand added my own font.
+- Init_Font() function. For now just brute forces it. I'll come up with a better solution later but for now this is fine.
+- Moved includes to bottom of toast_engine.h.
+- Added CATTO sprite constant as de facto default sprite.
+- Changed the Font struct to work with new implementation.
+- Fixed ANOTHER bug in Draw_Sprite where it would attempt to access sprite.mask when it is null. It still can but it shouldn't ever happen if the function is used correctly.
+- Changed main.c around to show off the new Font function. It seems to work decently well but most of the sprites are messed up for some reason.
+- Also removed debugSprite2 because that is now the CATTO global. :3

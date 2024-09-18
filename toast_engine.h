@@ -13,17 +13,6 @@
 #define toast_engine_h
 
 
-//////////////
-// Includes //
-//////////////
-
-// Standard Libararies
-#include <stdlib.h>	// malloc()
-#include <stdarg.h>	// arg
-#include <math.h>	// sin(), cos()
-// Cedmade Libraries
-
-
 ////////////
 // Macros //
 ////////////
@@ -31,7 +20,6 @@
 #define DEFAULTCOORDINATE {0,0}
 #define DEFAULTTRANSFORM {DEFAULTCOORDINATE,100,100,0}
 #define DEFAULTCAMERA {DEFAULTTRANSFORM}
-
 
 ///////////////
 //  Structs  //
@@ -94,8 +82,8 @@ typedef struct Components{
 } Components;
 
 typedef struct Font{
-	unsigned int height;
-	unsigned char *c;
+	Sprite *character;
+	const unsigned char spacing;
 } Font;
 
 
@@ -163,5 +151,26 @@ void Draw_Char(unsigned char character, Coordinate coord, Font f);
 void Draw_Text(unsigned char *string, Coordinate coord, Font f);
 
 //void Sprite_Rotate(sprite Sprite, Transform *transform);
+
+
+////////////
+// Consts //
+////////////
+
+extern const Sprite CATTO;
+extern const Sprite FONT100;
+
+
+//////////////
+// Includes //
+//////////////
+
+// Standard Libararies
+#include <stdlib.h>	// malloc()
+#include <stdarg.h>	// arg
+#include <math.h>	// sin(), cos()
+// Cedmade Libraries
+#include "toast_fonts.h"
+
 
 #endif
