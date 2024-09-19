@@ -53,7 +53,6 @@ typedef struct Sprite{
 	
 	unsigned char visible;	// Boolean flag for visiblility. 1 visible 0 invisible.
 	unsigned char opaque;	// Boolean flag for opacity. 1 opaque 0 transluscent.
-	
 } Sprite;
 
 typedef struct Camera{

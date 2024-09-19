@@ -1,13 +1,57 @@
 T0ast Engine Changelog:
 =======================
 
-0.1 - 2023-06-08:
-- First version.
-- Capable of drawing sprites and tilemaps.
+0.3.2 - 2024-09-18:
+- Changed the default font data to no longer be corrupted.
+- Moves the return condition in Draw_Sprite() so that the function ends at the correct time again.
+- Added a fix to SpriteConvert.c to a bug that caused the output to sometimes be corrupted.
+- Added default data to SpriteConvert.c
+- Changed the changelog to show newest versions at the top of the file.
+- Added default data to SpriteConvert.c
 
-0.1.1 - 2023-06-10:
-- Made Draw_Sprite() and Draw_Sprite_Scale() more efficient by immidiately terminating if the sprite is out of view as well as only drawing the parts that are in view.
-- Draw_Sprite() and Draw_Sprite_Scale() now return integers. 1 if a sprite is drawn and 0 if a sprite is not drawn.
+0.3.1 - 2024-09-18:
+- Fixed a few bugs in Draw_Sprite that caused rendering glitches and memory involved crashes.
+- Renamed Sprite.visibility to Sprite.mask.
+- Created toast_fonts.h and toast_fonts.c files.
+- Hand added my own font.
+- Init_Font() function. For now just brute forces it. I'll come up with a better solution later but for now this is fine.
+- Moved includes to bottom of toast_engine.h.
+- Added CATTO sprite constant as de facto default sprite.
+- Changed the Font struct to work with new implementation.
+- Fixed ANOTHER bug in Draw_Sprite where it would attempt to access sprite.mask when it is null. It still can but it shouldn't ever happen if the function is used correctly.
+- Changed main.c around to show off the new Font function. It seems to work decently well but most of the sprites are messed up for some reason.
+- Also removed debugSprite2 because that is now the CATTO global. :3
+p.s. Also added a nice little script to convert data to sprite hex.
+
+0.3 - 2024-09-16:
+- Init_Sprite is now completely different. Converting the same input sprites into binary.
+- Input sprites now have slightly larger headers.
+- Draw_Sprite rewritten entirely to draw the new binary format of sprite data. Far faster as a consequence.
+- Init_Tileset changed slightly to return an error value if malloc fails.
+- Added Font struct to prepare for font support.
+- Added Draw_Char and Draw_Text functions to prepare for font support.
+- Added DEFAULTCOORDINATE and DEFAULTFONT macros. DEFAULTFONT is unfinished.
+- Changed Transform to contain Coordinate structure instead of x and y variables.
+- Changed Sprite massively. Now has "visibility" and "opaque" variables. All data is changed to unsigned chars due to binary overhaul.
+- Init_Sprite now returns int based on if malloc succeeded or not.
+- Init_Tileset now returns int based on if malloc succeeded or not.
+- Draw_Sprite now returns void.
+- WIP Draw_Text and Draw_Char functions.
+- Performance improvements. General code commenting.
+- Cleaned up main.c. Main now shows off the drawing and transparency capabilities of Draw_Sprite.
+
+0.2.2 - 2024-09-15:
+- Moved includes from toast_engine.c to toast_engine.h.
+- Mild cleanup.
+- Added simple Coordinate struct.
+- Unfinished rotation code.
+
+0.2.1 - 2024-09-03:
+- [Added] "*parent", "**child". and "children" variables in Node. No current functionality.
+- [Removed] "base" from Camera. Nodes will be implemented in another way soon.
+- [Removed] Draw_Sprite_Camera() prototype. There will be other functions to deal with cameras soon.
+- [Edited] DEFAULTCAMERA macro to use DEFAULTTRANSFORM in it.
+- Various small edits to comments.
 
 0.2 - 2024-09-02:
 - Credited myself in toast_engine.h.
@@ -40,46 +84,10 @@ Attach_Components() assigns "components" to "node.data".
 - [Edited] parts of Init_Tilemap() to account for edited struct.
 - [Edited] main.c in order to have it work with the new engine version.
 
-0.2.1 - 2024-09-03:
-- [Added] "*parent", "**child". and "children" variables in Node. No current functionality.
-- [Removed] "base" from Camera. Nodes will be implemented in another way soon.
-- [Removed] Draw_Sprite_Camera() prototype. There will be other functions to deal with cameras soon.
-- [Edited] DEFAULTCAMERA macro to use DEFAULTTRANSFORM in it.
-- Various small edits to comments.
+0.1.1 - 2023-06-10:
+- Made Draw_Sprite() and Draw_Sprite_Scale() more efficient by immidiately terminating if the sprite is out of view as well as only drawing the parts that are in view.
+- Draw_Sprite() and Draw_Sprite_Scale() now return integers. 1 if a sprite is drawn and 0 if a sprite is not drawn.
 
-0.2.2 - 2024-09-15:
-- Moved includes from toast_engine.c to toast_engine.h.
-- Mild cleanup.
-- Added simple Coordinate struct.
-- Unfinished rotation code.
-
-0.3 - 2024-09-16:
-- Init_Sprite is now completely different. Converting the same input sprites into binary.
-- Input sprites now have slightly larger headers.
-- Draw_Sprite rewritten entirely to draw the new binary format of sprite data. Far faster as a consequence.
-- Init_Tileset changed slightly to return an error value if malloc fails.
-- Added Font struct to prepare for font support.
-- Added Draw_Char and Draw_Text functions to prepare for font support.
-- Added DEFAULTCOORDINATE and DEFAULTFONT macros. DEFAULTFONT is unfinished.
-- Changed Transform to contain Coordinate structure instead of x and y variables.
-- Changed Sprite massively. Now has "visibility" and "opaque" variables. All data is changed to unsigned chars due to binary overhaul.
-- Init_Sprite now returns int based on if malloc succeeded or not.
-- Init_Tileset now returns int based on if malloc succeeded or not.
-- Draw_Sprite now returns void.
-- WIP Draw_Text and Draw_Char functions.
-- Performance improvements. General code commenting.
-- Cleaned up main.c. Main now shows off the drawing and transparency capabilities of Draw_Sprite.
-
-0.3.1 - 2024-09-18:
-- Fixed a few bugs in Draw_Sprite that caused rendering glitches and memory involved crashes.
-- Renamed Sprite.visibility to Sprite.mask.
-- Created toast_fonts.h and toast_fonts.c files.
-- Hand added my own font.
-- Init_Font() function. For now just brute forces it. I'll come up with a better solution later but for now this is fine.
-- Moved includes to bottom of toast_engine.h.
-- Added CATTO sprite constant as de facto default sprite.
-- Changed the Font struct to work with new implementation.
-- Fixed ANOTHER bug in Draw_Sprite where it would attempt to access sprite.mask when it is null. It still can but it shouldn't ever happen if the function is used correctly.
-- Changed main.c around to show off the new Font function. It seems to work decently well but most of the sprites are messed up for some reason.
-- Also removed debugSprite2 because that is now the CATTO global. :3
-p.s. Also added a nice little script to convert data to sprite hex.
+0.1 - 2023-06-08:
+- First version.
+- Capable of drawing sprites and tilemaps.
