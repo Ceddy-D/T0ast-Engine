@@ -98,7 +98,7 @@ void Draw_Sprite(Sprite sprite, Coordinate coord)
 			// Total number of bits of all bytes calculated.
 			bitIndex++;
 			// Returns if all pixels in the sprite have been calculated.
-			if (bitIndex > sprite.xMax*sprite.yMax) return;
+			if (bitIndex >= sprite.xMax*sprite.yMax) return;
 			
 			// Continues if the current pixel shouldn't change.
 			if (sprite.opaque == 0) if (!((sprite.mask[byteIndex] >> bitPointer) & 1))continue;
