@@ -175,28 +175,31 @@ void Attach_Components(Node *node, Components *components)
 	node->data = (void *)components;
 }
 
-/*void Draw_Char(unsigned char character, Coordinate coord, Font f)
-{
-	int i, j;
-	for (i = 1; f.c[i] != '\0'; i++)
-	{
-		for (j = 7; j >= 0; j--)
-		{
-			f.c[0]
-		}
-	}
-}
-
-void Draw_Text(unsigned char *string, Coordinate coord, Font f);
+void Draw_Text(unsigned char *string, Coordinate coord, Font font)
 {
 	int i;
-	int x;
+	unsigned char c;
+	Sprite spacing;
+	
+	spacing.data = malloc(font.spacing * font.height / 8 + 1);
+	for (i = 0; i < font.spacing * font.height / 8 + 1; i++)
+		spacing.data[i] = 0x00;
+	spacing.visible = 1;
+	spacing.opaque = 1;
+	spacing.xMax = font.spacing;
+	spacing.yMax = font.height;
 	
 	for (i = 0; string[i] != '\0'; i++)
 	{
-		Draw_Char(string[i], coord, f);
+		c = string[i] - 32;
+		Draw_Sprite(font.character[c], coord);
+		coord.x += font.character[c].xMax;
+//		Draw_Sprite(spacing, coord);
+		coord.x += font.spacing;
 	}
-}*/
+	
+	free(spacing.data);
+}
 
 // This is a mess and I probably need to just gut this whole function later.
 /*Sprite Sprite_Rotate(Sprite sprite, Transform *transform);
@@ -245,7 +248,7 @@ void Draw_Text(unsigned char *string, Coordinate coord, Font f);
 ////////////
 
 // Default sprite
-unsigned char D_CATTO[] = {
+unsigned char D_TOAST[] = {
 0x00,0x00,0x00,
 0x00,0x00,0x00,0x60,
 0x30,0x00,0x0A,
@@ -267,7 +270,7 @@ unsigned char D_CATTO[] = {
 0x00,0x00,0x00,
 0x00
 };
-unsigned char M_CATTO[] = {
+unsigned char M_TOAST[] = {
 0x00,0x00,0x07,
 0x87,0x80,0x00,0xF8,
 0x7F,0xFF,0xFF,
@@ -289,4 +292,4 @@ unsigned char M_CATTO[] = {
 0x0E,0x1F,0xE0,
 0x00
 };
-const Sprite CATTO = {D_CATTO,M_CATTO,28,19,1,0};
+const Sprite TOAST = {D_TOAST,M_TOAST,28,19,1,0};

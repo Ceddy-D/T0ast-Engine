@@ -1,381 +1,197 @@
 #include "toast_fonts.h"
+
+// Font Hex.
 unsigned char D_FONT0[] = {0x00};
+unsigned char D_FONT1[] = {0xE8};
+unsigned char D_FONT2[] = {0xB4,0x00};
+unsigned char D_FONT3[] = {0x57,0xD5,0xF5,0x00};
+unsigned char D_FONT4[] = {0x75,0x1C,0x57,0x00};
+unsigned char D_FONT5[] = {0xA5,0x4A};
+unsigned char D_FONT6[] = {0x6A,0x5A,0xF0};
+unsigned char D_FONT7[] = {0xC0};
+unsigned char D_FONT8[] = {0x6A,0x40};
+unsigned char D_FONT9[] = {0x95,0x80};
+unsigned char D_FONT10[] = {0xAA,0x80};
+unsigned char D_FONT11[] = {0x0B,0xA0};
+unsigned char D_FONT12[] = {0x0D,0x80};
+unsigned char D_FONT13[] = {0x03,0x80};
+unsigned char D_FONT14[] = {0x10};
+unsigned char D_FONT15[] = {0x25,0x48};
+unsigned char D_FONT16[] = {0xF6,0xDE};
+unsigned char D_FONT17[] = {0x59,0x2E};
+unsigned char D_FONT18[] = {0x69,0x24,0xF0};
+unsigned char D_FONT19[] = {0x69,0x29,0x60};
+unsigned char D_FONT20[] = {0x26,0xAF,0x20};
+unsigned char D_FONT21[] = {0xF3,0x1E};
+unsigned char D_FONT22[] = {0x73,0xDE};
+unsigned char D_FONT23[] = {0xE5,0x24};
+unsigned char D_FONT24[] = {0xF5,0x5E};
+unsigned char D_FONT25[] = {0xF7,0x9E};
+unsigned char D_FONT26[] = {0x50};
+unsigned char D_FONT27[] = {0x98};
+unsigned char D_FONT28[] = {0x2A,0x22};
+unsigned char D_FONT29[] = {0x1C,0x70};
+unsigned char D_FONT30[] = {0x88,0xA8};
+unsigned char D_FONT31[] = {0x69,0x20,0x20};
+unsigned char D_FONT32[] = {0x74,0xEB,0x36,0x00};
+unsigned char D_FONT33[] = {0x57,0xDA};
+unsigned char D_FONT34[] = {0xF7,0x5E};
+unsigned char D_FONT35[] = {0x72,0x46};
+unsigned char D_FONT36[] = {0xD6,0xDC};
+unsigned char D_FONT37[] = {0xF3,0x4E};
+unsigned char D_FONT38[] = {0xF3,0x48};
+unsigned char D_FONT39[] = {0x78,0xB9,0x70};
+unsigned char D_FONT40[] = {0xB7,0xDA};
+unsigned char D_FONT41[] = {0xE9,0x2E};
+unsigned char D_FONT42[] = {0x72,0x2A,0x40};
+unsigned char D_FONT43[] = {0xB7,0x5A};
+unsigned char D_FONT44[] = {0x92,0x4E};
+unsigned char D_FONT45[] = {0x8E,0xEB,0x18,0x80};
+unsigned char D_FONT46[] = {0x9D,0xB9,0x90};
+unsigned char D_FONT47[] = {0x56,0xD4};
+unsigned char D_FONT48[] = {0xD7,0x48};
+unsigned char D_FONT49[] = {0x69,0x9A,0x50};
+unsigned char D_FONT50[] = {0xD7,0x5A};
+unsigned char D_FONT51[] = {0x71,0x1C};
+unsigned char D_FONT52[] = {0xE9,0x24};
+unsigned char D_FONT53[] = {0x99,0x99,0x60};
+unsigned char D_FONT54[] = {0xB6,0xD4};
+unsigned char D_FONT55[] = {0x8C,0x6B,0x55,0x00};
+unsigned char D_FONT56[] = {0xB5,0x5A};
+unsigned char D_FONT57[] = {0xB5,0x24};
+unsigned char D_FONT58[] = {0xF8,0x88,0x8F,0x80};
+unsigned char D_FONT59[] = {0xEA,0xC0};
+unsigned char D_FONT60[] = {0x91,0x12};
+unsigned char D_FONT61[] = {0xD5,0xC0};
+unsigned char D_FONT62[] = {0x22,0xA2,0x00,0x00};
+unsigned char D_FONT63[] = {0x00,0x00,0xF0};
+unsigned char D_FONT64[] = {0x90,0x00};
+unsigned char D_FONT65[] = {0x0E,0xD6};
+unsigned char D_FONT66[] = {0x93,0x5C};
+unsigned char D_FONT67[] = {0x1A,0x40};
+unsigned char D_FONT68[] = {0x25,0xD6};
+unsigned char D_FONT69[] = {0x0E,0xE6};
+unsigned char D_FONT70[] = {0x0E,0x68};
+unsigned char D_FONT71[] = {0x75,0x9C};
+unsigned char D_FONT72[] = {0x93,0x5A};
+unsigned char D_FONT73[] = {0x4D,0x40};
+unsigned char D_FONT74[] = {0x45,0xC0};
+unsigned char D_FONT75[] = {0x92,0xEA};
+unsigned char D_FONT76[] = {0xAA,0x40};
+unsigned char D_FONT77[] = {0x06,0xAB,0x5A,0x80};
+unsigned char D_FONT78[] = {0x1A,0xDA};
+unsigned char D_FONT79[] = {0x0A,0xD4};
+unsigned char D_FONT80[] = {0x1A,0xE8};
+unsigned char D_FONT81[] = {0x06,0xA6,0x30};
+unsigned char D_FONT82[] = {0x17,0x48};
+unsigned char D_FONT83[] = {0x39,0xC0};
+unsigned char D_FONT84[] = {0x5D,0x22};
+unsigned char D_FONT85[] = {0x16,0xD6};
+unsigned char D_FONT86[] = {0x16,0xD4};
+unsigned char D_FONT87[] = {0x04,0x63,0x55,0x00};
+unsigned char D_FONT88[] = {0x15,0x5A};
+unsigned char D_FONT89[] = {0x16,0xA8};
+unsigned char D_FONT90[] = {0x1D,0x4E};
+unsigned char D_FONT91[] = {0x6A,0x26};
+unsigned char D_FONT92[] = {0xF8};
+unsigned char D_FONT93[] = {0xC8,0xAC};
+unsigned char D_FONT94[] = {0x01,0x99,0x80,0x00};
+
+// Font Sprites.
 const Sprite FONT0 = {D_FONT0,NULL,4,1,1,1};
-unsigned char D_FONT1[] = {
-0xE8
-};
 const Sprite FONT1 = {D_FONT1,NULL,1,5,1,1};
-unsigned char D_FONT2[] = {
-0xB4,0x00
-};
 const Sprite FONT2 = {D_FONT2,NULL,3,5,1,1};
-unsigned char D_FONT3[] = {
-0x57,0xD5,0xF5,0x00
-};
 const Sprite FONT3 = {D_FONT3,NULL,5,5,1,1};
-unsigned char D_FONT4[] = {
-0x75,0x1C,0x57,0x00
-};
 const Sprite FONT4 = {D_FONT4,NULL,5,5,1,1};
-unsigned char D_FONT5[] = {
-0xA5,0x4A
-};
 const Sprite FONT5 = {D_FONT5,NULL,3,5,1,1};
-unsigned char D_FONT6[] = {
-0x6A,0x5A,0xF0
-};
 const Sprite FONT6 = {D_FONT6,NULL,4,5,1,1};
-unsigned char D_FONT7[] = {
-0xC0
-};
 const Sprite FONT7 = {D_FONT7,NULL,1,5,1,1};
-unsigned char D_FONT8[] = {
-0x6A,0x40
-};
 const Sprite FONT8 = {D_FONT8,NULL,2,5,1,1};
-unsigned char D_FONT9[] = {
-0x95,0x80
-};
 const Sprite FONT9 = {D_FONT9,NULL,2,5,1,1};
-unsigned char D_FONT10[] = {
-0xAA,0x80
-};
 const Sprite FONT10 = {D_FONT10,NULL,3,5,1,1};
-unsigned char D_FONT11[] = {
-0x0B,0xA0
-};
 const Sprite FONT11 = {D_FONT11,NULL,3,5,1,1};
-unsigned char D_FONT12[] = {
-0x0D,0x80
-};
 const Sprite FONT12 = {D_FONT12,NULL,2,5,1,1};
-unsigned char D_FONT13[] = {
-0x03,0x80
-};
 const Sprite FONT13 = {D_FONT13,NULL,3,5,1,1};
-unsigned char D_FONT14[] = {
-0x10
-};
 const Sprite FONT14 = {D_FONT14,NULL,1,5,1,1};
-unsigned char D_FONT15[] = {
-0x25,0x48
-};
 const Sprite FONT15 = {D_FONT15,NULL,3,5,1,1};
-unsigned char D_FONT16[] = {
-0xF6,0xDE
-};
 const Sprite FONT16 = {D_FONT16,NULL,3,5,1,1};
-unsigned char D_FONT17[] = {
-0x59,0x2E
-};
 const Sprite FONT17 = {D_FONT17,NULL,3,5,1,1};
-unsigned char D_FONT18[] = {
-0x69,0x24,0xF0
-};
 const Sprite FONT18 = {D_FONT18,NULL,4,5,1,1};
-unsigned char D_FONT19[] = {
-0x69,0x29,0x60
-};
 const Sprite FONT19 = {D_FONT19,NULL,4,5,1,1};
-unsigned char D_FONT20[] = {
-0x26,0xAF,0x20
-};
 const Sprite FONT20 = {D_FONT20,NULL,4,5,1,1};
-unsigned char D_FONT21[] = {
-0xF3,0x1E
-};
 const Sprite FONT21 = {D_FONT21,NULL,3,5,1,1};
-unsigned char D_FONT22[] = {
-0x73,0xDE
-};
 const Sprite FONT22 = {D_FONT22,NULL,3,5,1,1};
-unsigned char D_FONT23[] = {
-0xE5,0x24
-};
 const Sprite FONT23 = {D_FONT23,NULL,3,5,1,1};
-unsigned char D_FONT24[] = {
-0xF5,0x5E
-};
 const Sprite FONT24 = {D_FONT24,NULL,3,5,1,1};
-unsigned char D_FONT25[] = {
-0xF7,0x9E
-};
 const Sprite FONT25 = {D_FONT25,NULL,3,5,1,1};
-unsigned char D_FONT26[] = {
-0x50
-};
 const Sprite FONT26 = {D_FONT26,NULL,1,5,1,1};
-unsigned char D_FONT27[] = {
-0x98
-};
 const Sprite FONT27 = {D_FONT27,NULL,1,5,1,1};
-unsigned char D_FONT28[] = {
-0x2A,0x22
-};
 const Sprite FONT28 = {D_FONT28,NULL,3,5,1,1};
-unsigned char D_FONT29[] = {
-0x1C,0x70
-};
 const Sprite FONT29 = {D_FONT29,NULL,3,5,1,1};
-unsigned char D_FONT30[] = {
-0x88,0xA8
-};
 const Sprite FONT30 = {D_FONT30,NULL,3,5,1,1};
-unsigned char D_FONT31[] = {
-0x69,0x20,0x20
-};
 const Sprite FONT31 = {D_FONT31,NULL,4,5,1,1};
-unsigned char D_FONT32[] = {
-0x74,0xEB,0x36,0x00
-};
 const Sprite FONT32 = {D_FONT32,NULL,5,5,1,1};
-unsigned char D_FONT33[] = {
-0x57,0xDA
-};
 const Sprite FONT33 = {D_FONT33,NULL,3,5,1,1};
-unsigned char D_FONT34[] = {
-0xF7,0x5E
-};
 const Sprite FONT34 = {D_FONT34,NULL,3,5,1,1};
-unsigned char D_FONT35[] = {
-0x72,0x46
-};
 const Sprite FONT35 = {D_FONT35,NULL,3,5,1,1};
-unsigned char D_FONT36[] = {
-0xD6,0xDC
-};
 const Sprite FONT36 = {D_FONT36,NULL,3,5,1,1};
-unsigned char D_FONT37[] = {
-0xF3,0x4E
-};
 const Sprite FONT37 = {D_FONT37,NULL,3,5,1,1};
-unsigned char D_FONT38[] = {
-0xF3,0x48
-};
 const Sprite FONT38 = {D_FONT38,NULL,3,5,1,1};
-unsigned char D_FONT39[] = {
-0x78,0xB9,0x70
-};
 const Sprite FONT39 = {D_FONT39,NULL,4,5,1,1};
-unsigned char D_FONT40[] = {
-0xB7,0xDA
-};
 const Sprite FONT40 = {D_FONT40,NULL,3,5,1,1};
-unsigned char D_FONT41[] = {
-0xE9,0x2E
-};
 const Sprite FONT41 = {D_FONT41,NULL,3,5,1,1};
-unsigned char D_FONT42[] = {
-0x72,0x2A,0x40
-};
 const Sprite FONT42 = {D_FONT42,NULL,4,5,1,1};
-unsigned char D_FONT43[] = {
-0xB7,0x5A
-};
 const Sprite FONT43 = {D_FONT43,NULL,3,5,1,1};
-unsigned char D_FONT44[] = {
-0x92,0x4E
-};
 const Sprite FONT44 = {D_FONT44,NULL,3,5,1,1};
-unsigned char D_FONT45[] = {
-0x8E,0xEB,0x18,0x80
-};
 const Sprite FONT45 = {D_FONT45,NULL,5,5,1,1};
-unsigned char D_FONT46[] = {
-0x9D,0xB9,0x90
-};
 const Sprite FONT46 = {D_FONT46,NULL,4,5,1,1};
-unsigned char D_FONT47[] = {
-0x56,0xD4
-};
 const Sprite FONT47 = {D_FONT47,NULL,3,5,1,1};
-unsigned char D_FONT48[] = {
-0xD7,0x48
-};
 const Sprite FONT48 = {D_FONT48,NULL,3,5,1,1};
-unsigned char D_FONT49[] = {
-0x69,0x9A,0x50
-};
 const Sprite FONT49 = {D_FONT49,NULL,4,5,1,1};
-unsigned char D_FONT50[] = {
-0xD7,0x5A
-};
 const Sprite FONT50 = {D_FONT50,NULL,3,5,1,1};
-unsigned char D_FONT51[] = {
-0x71,0x1C
-};
 const Sprite FONT51 = {D_FONT51,NULL,3,5,1,1};
-unsigned char D_FONT52[] = {
-0xE9,0x24
-};
 const Sprite FONT52 = {D_FONT52,NULL,3,5,1,1};
-unsigned char D_FONT53[] = {
-0x99,0x99,0x60
-};
 const Sprite FONT53 = {D_FONT53,NULL,4,5,1,1};
-unsigned char D_FONT54[] = {
-0xB6,0xD4
-};
 const Sprite FONT54 = {D_FONT54,NULL,3,5,1,1};
-unsigned char D_FONT55[] = {
-0x8C,0x6B,0x55,0x00
-};
 const Sprite FONT55 = {D_FONT55,NULL,5,5,1,1};
-unsigned char D_FONT56[] = {
-0xB5,0x5A
-};
 const Sprite FONT56 = {D_FONT56,NULL,3,5,1,1};
-unsigned char D_FONT57[] = {
-0xB5,0x24
-};
 const Sprite FONT57 = {D_FONT57,NULL,3,5,1,1};
-unsigned char D_FONT58[] = {
-0xF8,0x88,0x8F,0x80
-};
 const Sprite FONT58 = {D_FONT58,NULL,5,5,1,1};
-unsigned char D_FONT59[] = {
-0xEA,0xC0
-};
 const Sprite FONT59 = {D_FONT59,NULL,2,5,1,1};
-unsigned char D_FONT60[] = {
-0x91,0x12
-};
 const Sprite FONT60 = {D_FONT60,NULL,3,5,1,1};
-unsigned char D_FONT61[] = {
-0xD5,0xC0
-};
 const Sprite FONT61 = {D_FONT61,NULL,2,5,1,1};
-unsigned char D_FONT62[] = {
-0x22,0xA2,0x00,0x00
-};
 const Sprite FONT62 = {D_FONT62,NULL,5,5,1,1};
-unsigned char D_FONT63[] = {
-0x00,0x00,0xF0
-};
 const Sprite FONT63 = {D_FONT63,NULL,4,5,1,1};
-unsigned char D_FONT64[] = {
-0x90,0x00
-};
 const Sprite FONT64 = {D_FONT64,NULL,2,5,1,1};
-unsigned char D_FONT65[] = {
-0x0E,0xD6
-};
 const Sprite FONT65 = {D_FONT65,NULL,3,5,1,1};
-unsigned char D_FONT66[] = {
-0x93,0x5C
-};
 const Sprite FONT66 = {D_FONT66,NULL,3,5,1,1};
-unsigned char D_FONT67[] = {
-0x1A,0x40
-};
 const Sprite FONT67 = {D_FONT67,NULL,2,5,1,1};
-unsigned char D_FONT68[] = {
-0x25,0xD6
-};
 const Sprite FONT68 = {D_FONT68,NULL,3,5,1,1};
-unsigned char D_FONT69[] = {
-0x0E,0xE6
-};
 const Sprite FONT69 = {D_FONT69,NULL,3,5,1,1};
-unsigned char D_FONT70[] = {
-0x0E,0x68
-};
 const Sprite FONT70 = {D_FONT70,NULL,3,5,1,1};
-unsigned char D_FONT71[] = {
-0x75,0x9C
-};
 const Sprite FONT71 = {D_FONT71,NULL,3,5,1,1};
-unsigned char D_FONT72[] = {
-0x93,0x5A
-};
 const Sprite FONT72 = {D_FONT72,NULL,3,5,1,1};
-unsigned char D_FONT73[] = {
-0x4D,0x40
-};
 const Sprite FONT73 = {D_FONT73,NULL,2,5,1,1};
-unsigned char D_FONT74[] = {
-0x45,0xC0
-};
 const Sprite FONT74 = {D_FONT74,NULL,2,5,1,1};
-unsigned char D_FONT75[] = {
-0x92,0xEA
-};
 const Sprite FONT75 = {D_FONT75,NULL,3,5,1,1};
-unsigned char D_FONT76[] = {
-0xAA,0x40
-};
 const Sprite FONT76 = {D_FONT76,NULL,2,5,1,1};
-unsigned char D_FONT77[] = {
-0x06,0xAB,0x5A,0x80
-};
 const Sprite FONT77 = {D_FONT77,NULL,5,5,1,1};
-unsigned char D_FONT78[] = {
-0x1A,0xDA
-};
 const Sprite FONT78 = {D_FONT78,NULL,3,5,1,1};
-unsigned char D_FONT79[] = {
-0x0A,0xD4
-};
 const Sprite FONT79 = {D_FONT79,NULL,3,5,1,1};
-unsigned char D_FONT80[] = {
-0x1A,0xE8
-};
 const Sprite FONT80 = {D_FONT80,NULL,3,5,1,1};
-unsigned char D_FONT81[] = {
-0x06,0xA6,0x30
-};
 const Sprite FONT81 = {D_FONT81,NULL,4,5,1,1};
-unsigned char D_FONT82[] = {
-0x17,0x48
-};
 const Sprite FONT82 = {D_FONT82,NULL,3,5,1,1};
-unsigned char D_FONT83[] = {
-0x39,0xC0
-};
 const Sprite FONT83 = {D_FONT83,NULL,2,5,1,1};
-unsigned char D_FONT84[] = {
-0x5D,0x22
-};
 const Sprite FONT84 = {D_FONT84,NULL,3,5,1,1};
-unsigned char D_FONT85[] = {
-0x16,0xD6
-};
 const Sprite FONT85 = {D_FONT85,NULL,3,5,1,1};
-unsigned char D_FONT86[] = {
-0x16,0xD4
-};
 const Sprite FONT86 = {D_FONT86,NULL,3,5,1,1};
-unsigned char D_FONT87[] = {
-0x04,0x63,0x55,0x00
-};
 const Sprite FONT87 = {D_FONT87,NULL,5,5,1,1};
-unsigned char D_FONT88[] = {
-0x15,0x5A
-};
 const Sprite FONT88 = {D_FONT88,NULL,3,5,1,1};
-unsigned char D_FONT89[] = {
-0x16,0xA8
-};
 const Sprite FONT89 = {D_FONT89,NULL,3,5,1,1};
-unsigned char D_FONT90[] = {
-0x1D,0x4E
-};
 const Sprite FONT90 = {D_FONT90,NULL,3,5,1,1};
-unsigned char D_FONT91[] = {
-0x6A,0x26
-};
 const Sprite FONT91 = {D_FONT91,NULL,3,5,1,1};
-unsigned char D_FONT92[] = {
-0xF8
-};
 const Sprite FONT92 = {D_FONT92,NULL,1,5,1,1};
-unsigned char D_FONT93[] = {
-0xC8,0xAC
-};
 const Sprite FONT93 = {D_FONT93,NULL,3,5,1,1};
-unsigned char D_FONT94[] = {
-0x01,0x99,0x80,0x00
-};
 const Sprite FONT94 = {D_FONT94,NULL,6,5,1,1};
 
 /*const Sprite * const DEFAULTFONTDATA[] =
@@ -495,5 +311,7 @@ Font Init_Font()
 	font.character[92] = FONT92;
 	font.character[93] = FONT93;
 	font.character[94] = FONT94;
+	font.spacing = 1;
+	font.height = 5;
 	return font;
 }

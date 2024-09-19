@@ -1,6 +1,15 @@
 T0ast Engine Changelog:
 =======================
 
+0.3.3 - 2024-09-19:
+- Implemented Draw_Text, which writes "string" at "coord" using "font".
+- Edited Font to work better.
+- Renamed the default catto sprite to "TOAST" Toast is now the mascot of the engine.
+- Mild bug fix to Draw_Sprite().
+- Reorganized toast_fonts.c.
+- Removed Bdisp_AllClr_DD() from main.c because it caused ugly jittering and is unnecessary.
+- Cleaned up main.c a bit of junk.
+
 0.3.2 - 2024-09-18:
 - Changed the default font data to no longer be corrupted.
 - Moves the return condition in Draw_Sprite() so that the function ends at the correct time again.

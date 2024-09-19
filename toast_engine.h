@@ -82,7 +82,8 @@ typedef struct Components{
 
 typedef struct Font{
 	Sprite *character;
-	const unsigned char spacing;
+	unsigned char spacing;
+	unsigned char height;
 } Font;
 
 
@@ -145,9 +146,7 @@ void Draw_Tilemap(Tilemap tilemap, Camera camera, Coordinate coord);
 */
 void Attach_Components(Node *node, Components *components);
 
-void Draw_Char(unsigned char character, Coordinate coord, Font f);
-
-void Draw_Text(unsigned char *string, Coordinate coord, Font f);
+void Draw_Text(unsigned char *string, Coordinate coord, Font font);
 
 //void Sprite_Rotate(sprite Sprite, Transform *transform);
 
@@ -156,8 +155,7 @@ void Draw_Text(unsigned char *string, Coordinate coord, Font f);
 // Consts //
 ////////////
 
-extern const Sprite CATTO;
-extern const Sprite FONT100;
+extern const Sprite TOAST;
 
 
 //////////////
