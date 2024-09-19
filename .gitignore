@@ -1,0 +1,10 @@
+
+*.txt
+/Debug
+/INIT
+*.png
+*.g1w
+*.bat
+*.dlw
+*.dlr
+/Relevant Standalone Programs
