@@ -81,9 +81,9 @@ typedef struct Components{
 } Components;
 
 typedef struct Font{
-	Sprite *character;
-	unsigned char spacing;
-	unsigned char height;
+	Sprite *character;		// The character data.
+	unsigned char spacing;	// Spacing between each letter horizontally.
+	unsigned char height;	// Vertical distance in the font.
 } Font;
 
 
