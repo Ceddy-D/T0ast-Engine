@@ -98,7 +98,7 @@ unsigned char D_FONT93[] = {0xC8,0xAC};
 unsigned char D_FONT94[] = {0x01,0x99,0x80,0x00};
 
 // Font Sprites.
-const Sprite FONT0 = {D_FONT0,NULL,4,1,1,1};
+const Sprite FONT0 = {D_FONT0,NULL,2,1,1,1};
 const Sprite FONT1 = {D_FONT1,NULL,1,5,1,1};
 const Sprite FONT2 = {D_FONT2,NULL,3,5,1,1};
 const Sprite FONT3 = {D_FONT3,NULL,5,5,1,1};
