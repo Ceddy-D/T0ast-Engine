@@ -91,59 +91,12 @@ typedef struct Font{
 //  Functions  //
 /////////////////
 
-/*
-** Initiates sprite contents to point to that of a template and sets sprite X and Y values.
-** ========================================================================================
-** parameter *sprite - The sprite to be initiated.
-** parameter *templateSprite - The template to be pointed to.
-** return - returns 0 on success and negative error value on failure.
-*/
 int Init_Sprite(Sprite *sprite, unsigned char *templateSprite);
-
-/*
-** Draws sprite at ( transform.x , transform.y )
-** scaled to ( transform.scaleX , transform.scaleY)
-** rotated by ( transform.rotation ) degrees clockwise.
-** ====================================================
-** parameter sprite - The sprite to be drawn.
-** parameter transform - The transformation to be done to the sprite.
-*/
 void Draw_Sprite(Sprite sprite, Coordinate coord);
-
-/*
-** Initializes Tileset's sprites.
-** ==============================
-** parameter *tileset - The tileset to be initialized.
-** parameter numSprites - How many sprites are to be initialized to the tileset.
-** parameter ... - Sprites to be set to tileset.sprites. 
-** return - returns 0 on success and negative error value on failure.
-*/
 int Init_Tileset(Tileset *tileset, int numSprites, ...);
-
-/*
-** Initializes a Tilemap's tileset and map.
-** ========================================
-** parameter *tilemap - The tilemap to be initialized.
-** parameter tileset - The tilemap's tileset.
-** parameter *map - The tilemap's map.
-*/
 void Init_Tilemap(Tilemap *tilemap, Tileset tileset, int *map);
-
-/*
-** Draws a tilemap to the screen.
-** ==============================
-** parameter tilemap - The tilemap to draw to the screen.
-** parameter camera - The camera that looks at the tilemap.
-** parameter transform - The transformation to be done to the tilemap.
-*/
 void Draw_Tilemap(Tilemap tilemap, Camera camera, Coordinate coord);
 
-/*
-** Attaches any number of components to a node's data.
-** ===================================================
-** parameter *node - Pointer to Node object to be edited.
-** parameter *components - Pointer to Components object to add to *node.
-*/
 void Attach_Components(Node *node, Components *components);
 
 void Draw_Text(unsigned char *string, Coordinate coord, Font font);

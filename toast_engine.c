@@ -1,5 +1,12 @@
 #include "toast_engine.h"
 
+/*
+** Initiates sprite contents to point to that of a template and sets sprite X and Y values.
+** ========================================================================================
+** parameter *sprite - The sprite to be initiated.
+** parameter *templateSprite - The template to be pointed to.
+** return - returns 0 on success and negative error value on failure.
+*/
 int Init_Sprite(Sprite *outputSprite, unsigned char *inputSprite)
 {
 	// Input sprite header:
@@ -77,6 +84,14 @@ int Init_Sprite(Sprite *outputSprite, unsigned char *inputSprite)
 	return 0;
 }
 
+/*
+** Draws sprite at ( transform.x , transform.y )
+** scaled to ( transform.scaleX , transform.scaleY)
+** rotated by ( transform.rotation ) degrees clockwise.
+** ====================================================
+** parameter sprite - The sprite to be drawn.
+** parameter transform - The transformation to be done to the sprite.
+*/
 void Draw_Sprite(Sprite sprite, Coordinate coord)
 {
 	// Variable declarations.
@@ -115,6 +130,14 @@ void Draw_Sprite(Sprite sprite, Coordinate coord)
 	}
 }
 
+/*
+** Initializes Tileset's sprites.
+** ==============================
+** parameter *tileset - The tileset to be initialized.
+** parameter numSprites - How many sprites are to be initialized to the tileset.
+** parameter ... - Sprites to be set to tileset.sprites. 
+** return - returns 0 on success and negative error value on failure.
+*/
 int Init_Tileset(Tileset *tileset, int numSprites, ...)
 {
 	Sprite *spritesPtrTemp = malloc(sizeof(Sprite) * numSprites);
@@ -138,6 +161,13 @@ int Init_Tileset(Tileset *tileset, int numSprites, ...)
 	return 0;
 }
 
+/*
+** Initializes a Tilemap's tileset and map.
+** ========================================
+** parameter *tilemap - The tilemap to be initialized.
+** parameter tileset - The tilemap's tileset.
+** parameter *map - The tilemap's map.
+*/
 void Init_Tilemap(Tilemap *tilemap, Tileset tileset, int *map)
 {
 	int size;
@@ -156,6 +186,13 @@ void Init_Tilemap(Tilemap *tilemap, Tileset tileset, int *map)
 	tilemap->map = map;
 }
 
+/*
+** Draws a tilemap to the screen.
+** ==============================
+** parameter tilemap - The tilemap to draw to the screen.
+** parameter camera - The camera that looks at the tilemap.
+** parameter transform - The transformation to be done to the tilemap.
+*/
 void Draw_Tilemap(Tilemap tilemap, Camera camera, Coordinate coord)
 {
 	int i,j;
@@ -170,11 +207,24 @@ void Draw_Tilemap(Tilemap tilemap, Camera camera, Coordinate coord)
 	}
 }
 
+/*
+** Attaches any number of components to a node's data.
+** ===================================================
+** parameter *node - Pointer to Node object to be edited.
+** parameter *components - Pointer to Components object to add to *node.
+*/
 void Attach_Components(Node *node, Components *components)
 {
 	node->data = (void *)components;
 }
 
+/*
+** Displays the text given.
+** ========================
+** parameter *string - String to be drawn.
+** parameter coord - Upper right coordinate of the text to be written.
+** parameter font - Font to display the text in.
+*/
 void Draw_Text(unsigned char *string, Coordinate coord, Font font)
 {
 	int i;
